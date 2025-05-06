@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAJJ - Contato</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#000000',secondary:'#E6D5C3'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.contact-hero {
+background-image: url('https://readdy.ai/api/search-image?query=minimalist%2520office%2520workspace%2520with%2520clean%2520desk%2520and%2520neutral%2520colors%2C%2520featuring%2520subtle%2520fashion%2520elements%2520like%2520fabric%2520swatches%2520and%2520design%2520sketches%2C%2520bathed%2520in%2520soft%2520natural%2520light%2520creating%2520an%2520airy%2520atmosphere%2520with%2520gentle%2520shadows%2C%2520professional%2520interior%2520photography%2520with%2520perfect%2520composition&width=1920&height=600&seq=101&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.faq-hero {
+background-image: url('https://readdy.ai/api/search-image?query=minimalist%2520fashion%2520retail%2520space%2520with%2520clothing%2520racks%2520displaying%2520black%2520and%2520white%2520streetwear%2C%2520clean%2520architectural%2520lines%2C%2520soft%2520ambient%2520lighting%2C%2520and%2520subtle%2520brand%2520elements%2C%2520professional%2520interior%2520photography%2520with%2520perfect%2520composition%2520and%2520balance&width=1920&height=600&seq=102&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.team-hero {
+background-image: url('https://readdy.ai/api/search-image?query=diverse%2520creative%2520team%2520in%2520minimalist%2520fashion%2520studio%2520environment%2C%2520working%2520collaboratively%2520on%2520streetwear%2520designs%2C%2520with%2520fabric%2520samples%2520and%2520mood%2520boards%2520visible%2C%2520bathed%2520in%2520natural%2520light%2520from%2520large%2520windows%2C%2520professional%2520lifestyle%2520photography%2520with%2520authentic%2520candid%2520feel&width=1920&height=600&seq=103&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.testimonial-hero {
+background-image: url('https://readdy.ai/api/search-image?query=stylish%2520diverse%2520group%2520of%2520young%2520people%2520wearing%2520minimalist%2520black%2520and%2520white%2520streetwear%2C%2520gathered%2520in%2520an%2520urban%2520setting%2520with%2520soft%2520natural%2520lighting%2C%2520expressing%2520authentic%2520joy%2520and%2520confidence%2C%2520professional%2520lifestyle%2520photography%2520with%2520candid%2520feel&width=1920&height=600&seq=104&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.product-hero {
+background-image: url('https://readdy.ai/api/search-image?query=premium%2520streetwear%2520collection%2520displayed%2520in%2520minimalist%2520setting%2C%2520featuring%2520black%2C%2520white%2520and%2520sand-colored%2520garments%2520with%2520clean%2520designs%2C%2520perfectly%2520arranged%2520to%2520showcase%2520textures%2520and%2520details%2C%2520professional%2520product%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows&width=1920&height=600&seq=105&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+input:focus, button:focus, textarea:focus {
+outline: none;
+}
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease-out;
+}
+.accordion-content.active {
+max-height: 500px;
+}
+.custom-checkbox {
+position: relative;
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+.checkmark {
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 4px;
+position: relative;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #000;
+border-color: #000;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+left: 7px;
+top: 3px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.star-rating {
+display: inline-flex;
+}
+.star-rating input {
+display: none;
+}
+.star-rating label {
+cursor: pointer;
+color: #ddd;
+font-size: 24px;
+}
+.star-rating input:checked ~ label {
+color: #FFD700;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+color: #FFD700;
+}
+.star-rating input:checked + label:hover,
+.star-rating input:checked ~ label:hover,
+.star-rating label:hover ~ input:checked ~ label,
+.star-rating input:checked ~ label:hover ~ label {
+color: #FFED85;
+}
+.tab-switcher {
+display: flex;
+background-color: #f1f1f1;
+border-radius: 9999px;
+padding: 4px;
+}
+.tab-button {
+padding: 8px 16px;
+border-radius: 9999px;
+border: none;
+background: transparent;
+cursor: pointer;
+font-weight: 500;
+transition: all 0.3s;
+white-space: nowrap;
+}
+.tab-button.active {
+background-color: #000;
+color: white;
+}
+.map-container {
+background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+background-size: cover;
+background-position: center;
+overflow: hidden;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header/Navigation -->
+<header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="/" class="text-3xl font-['Pacifico'] text-primary">LAJJ</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="index.html" class="text-gray-600 hover:text-primary font-medium">Início</a>
+<a href="shop.html" class="text-gray-600 hover:text-primary font-medium">Loja</a>
+<a href="about.html" class="text-gray-600 hover:text-primary font-medium">Sobre</a>
+<a href="contact.html" class="text-primary hover:text-gray-600 font-medium">Contato</a>
+</nav>
+<div class="flex items-center space-x-4">
+<a href="/search" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-search-line text-gray-700 ri-lg"></i>
+</a>
+<a href="login.html" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-user-line text-gray-700 ri-lg"></i>
+</a>
+<a href="cart.html" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-shopping-bag-line text-gray-700 ri-lg"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</a>
+<button class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 rounded-full transition" onclick="toggleMobileMenu()">
+<i class="ri-menu-line text-gray-700 ri-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Tab Navigation -->
+<div class="pt-24 pb-6 container mx-auto px-4">
+<div class="flex overflow-x-auto hide-scrollbar space-x-4 justify-center">
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap active" onclick="switchTab('contact')">Contato</button>
+</div>
+</div>
+<!-- Contact Page -->
+<div id="contact-tab" class="tab-content">
+<!-- Contact Hero Section -->
+<section class="contact-hero relative h-[300px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="container mx-auto px-4 z-10">
+<h1 class="text-4xl md:text-5xl font-bold text-white text-center">Entre em Contato</h1>
+<p class="text-xl text-white text-center mt-4">Estamos aqui para ajudar e responder às suas perguntas</p>
+</div>
+</section>
+<!-- Contact Form Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row gap-12">
+<!-- Contact Form -->
+<div class="md:w-2/3 bg-white rounded shadow-sm p-8">
+<h2 class="text-2xl font-bold mb-6">Envie-nos uma mensagem</h2>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="Seu nome completo">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="seu.email@exemplo.com">
+</div>
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Assunto</label>
+<input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="Assunto da sua mensagem">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
+<textarea id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded text-sm resize-none" placeholder="Digite sua mensagem aqui..."></textarea>
+</div>
+<div class="mb-6">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark mr-3"></span>
+<span class="text-sm text-gray-700">Concordo em receber emails sobre produtos, ofertas e notícias da LAJJ</span>
+</label>
+</div>
+<button type="submit" class="bg-primary text-white px-8 py-3 font-semibold !rounded-button hover:bg-gray-900 transition whitespace-nowrap">ENVIAR MENSAGEM</button>
+</form>
+</div>
+<!-- Contact Information -->
+<div class="md:w-1/3">
+<div class="bg-white rounded shadow-sm p-8 mb-8">
+<h2 class="text-2xl font-bold mb-6">Informações de Contato</h2>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full mr-4">
+<i class="ri-map-pin-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-medium">Endereço</h3>
+<p class="text-gray-600 mt-1">Av 5 de Julho, São Vicente, Cabo Verde</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full mr-4">
+<i class="ri-mail-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-medium">Email</h3>
+<p class="text-gray-600 mt-1">info@lajj.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full mr-4">
+<i class="ri-phone-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-medium">Telefone</h3>
+<p class="text-gray-600 mt-1">+231 34 34</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full mr-4">
+<i class="ri-time-line text-primary ri-lg"></i>
+</div>
+<div>
+<h3 class="font-medium">Horário de Funcionamento</h3>
+<p class="text-gray-600 mt-1">Segunda a Sexta: 9h às 18h</p>
+<p class="text-gray-600">Sábado: 10h às 15h</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded shadow-sm p-8">
+<h2 class="text-2xl font-bold mb-6">Siga-nos</h2>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-primary ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-facebook-fill text-primary ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-twitter-x-fill text-primary ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-tiktok-fill text-primary ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-8 text-center">Nossa Localização</h2>
+<div class="map-container h-[400px] rounded shadow-sm"></div>
+</div>
+</section>
+</div>
+<!-- FAQ Page -->
+<div id="faq-tab" class="tab-content hidden">
+<!-- FAQ Hero Section -->
+<section class="faq-hero relative h-[300px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="container mx-auto px-4 z-10">
+<h1 class="text-4xl md:text-5xl font-bold text-white text-center">Perguntas Frequentes</h1>
+<p class="text-xl text-white text-center mt-4">Respostas para as dúvidas mais comuns dos nossos clientes</p>
+</div>
+</section>
+<!-- FAQ Search Section -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-2xl mx-auto">
+<div class="relative mb-12">
+<input type="text" placeholder="Pesquisar perguntas..." class="w-full px-4 py-3 pl-12 border border-gray-300 rounded text-sm">
+<div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Content Section -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto">
+<!-- FAQ Categories -->
+<div class="flex overflow-x-auto hide-scrollbar space-x-4 justify-center mb-12">
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap active" onclick="switchFaqCategory('all')">Todos</button>
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap" onclick="switchFaqCategory('orders')">Pedidos e Envios</button>
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap" onclick="switchFaqCategory('returns')">Devoluções</button>
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap" onclick="switchFaqCategory('products')">Produtos</button>
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap" onclick="switchFaqCategory('payments')">Pagamentos</button>
+</div>
+<!-- FAQ Accordion -->
+<div class="space-y-4">
+<!-- Pedidos e Envios -->
+<div class="faq-category orders">
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Quanto tempo leva para receber meu pedido?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Para entregas em São Vicente, o prazo é de 1-3 dias úteis. Para entregas internacionais, o prazo varia entre 7-14 dias úteis, dependendo do país de destino. Após a confirmação do pagamento, você receberá um email com o código de rastreamento para acompanhar seu pedido.</p>
+</div>
+</div>
+</div>
+<!-- Devoluções -->
+<div class="faq-category returns hidden">
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Qual é a política de devolução?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Aceitamos devoluções em até 30 dias após o recebimento do pedido. Os produtos devem estar em perfeito estado, com todas as etiquetas originais e embalagem original. Para iniciar uma devolução, acesse sua conta e selecione o pedido que deseja devolver, ou entre em contato com nosso atendimento ao cliente.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Como faço para trocar um produto?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Para solicitar uma troca, entre em contato com nosso atendimento ao cliente em até 30 dias após o recebimento. Informe o número do pedido e os detalhes do produto que deseja trocar. Nossa equipe irá orientá-lo sobre os próximos passos e enviar uma etiqueta de devolução, se necessário.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Quem paga pelo frete de devolução?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Em caso de defeito de fabricação ou erro no envio, nós cobrimos o custo do frete de devolução. Para devoluções por outros motivos, como arrependimento ou tamanho incorreto, o cliente é responsável pelo custo do envio de devolução. O valor do frete original não é reembolsável.</p>
+</div>
+</div>
+</div>
+<!-- Produtos -->
+<div class="faq-category products hidden">
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Como encontrar o tamanho certo?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Cada produto em nosso site possui um guia de tamanhos específico. Recomendamos que você meça uma peça semelhante que você já possui e compare com nossas medidas. Se ainda tiver dúvidas, entre em contato com nosso atendimento ao cliente que terá prazer em ajudá-lo a encontrar o tamanho ideal.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">De quais materiais são feitas as roupas?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Utilizamos principalmente algodão orgânico de alta qualidade em nossas camisetas e moletons. Alguns produtos contêm uma pequena porcentagem de elastano para maior conforto e durabilidade. Todas as informações sobre a composição de cada peça estão disponíveis na descrição do produto em nosso site.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Como devo cuidar das minhas peças LAJJ?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Recomendamos lavar nossas peças à mão ou na máquina em ciclo delicado com água fria. Use sabão neutro e evite o uso de alvejantes. Não use secadora e deixe secar naturalmente, preferencialmente à sombra. Para manter a qualidade das estampas, recomendamos lavar as peças do avesso.</p>
+</div>
+</div>
+</div>
+<!-- Pagamentos -->
+<div class="faq-category payments hidden">
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Quais formas de pagamento vocês aceitam?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Aceitamos cartões de crédito (Visa, Mastercard, American Express), PayPal, transferência bancária e pagamento por Pix (apenas para clientes no Brasil). Todas as transações são processadas em ambiente seguro e criptografado para garantir a proteção dos seus dados.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">É seguro comprar no site da LAJJ?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Sim, nosso site utiliza certificado SSL de 256 bits para criptografar todas as informações transmitidas. Além disso, não armazenamos dados de cartão de crédito em nossos servidores. Todo o processamento de pagamentos é realizado por gateways reconhecidos e seguros do mercado.</p>
+</div>
+</div>
+<div class="accordion bg-white rounded shadow-sm">
+<div class="accordion-header p-6 cursor-pointer flex justify-between items-center">
+<h3 class="text-lg font-medium">Posso parcelar minhas compras?</h3>
+<i class="ri-arrow-down-s-line text-gray-700 ri-lg"></i>
+</div>
+<div class="accordion-content px-6 pb-6">
+<p class="text-gray-700">Sim, oferecemos parcelamento em até 6x sem juros para compras com cartão de crédito. O valor mínimo para parcelamento é de 100€. As opções de parcelamento disponíveis serão exibidas durante o processo de checkout, de acordo com o valor total da sua compra.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Still Need Help -->
+<div class="bg-white rounded shadow-sm p-8 mt-12 text-center">
+<h3 class="text-xl font-bold mb-4">Ainda precisa de ajuda?</h3>
+<p class="text-gray-700 mb-6">Nossa equipe de atendimento está disponível para ajudar com qualquer dúvida que você possa ter.</p>
+<a href="/contact" class="bg-primary text-white px-8 py-3 font-semibold !rounded-button hover:bg-gray-900 transition whitespace-nowrap inline-block">FALE CONOSCO</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Team Bio Page -->
+<div id="team-tab" class="tab-content hidden">
+<!-- Team Hero Section -->
+<section class="team-hero relative h-[300px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="container mx-auto px-4 z-10">
+<h1 class="text-4xl md:text-5xl font-bold text-white text-center">Nossa Equipe</h1>
+<p class="text-xl text-white text-center mt-4">Conheça as pessoas por trás da LAJJ</p>
+</div>
+</section>
+<!-- Company Culture Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<h2 class="text-3xl font-bold mb-6">Nossa Cultura</h2>
+<p class="text-gray-700 mb-8">Na LAJJ, acreditamos que a moda é uma forma de expressão pessoal e cultural. Nossa equipe diversificada traz influências de Cabo Verde e do mundo todo, criando peças que representam a fusão entre tradição e contemporaneidade. Valorizamos a criatividade, sustentabilidade e autenticidade em tudo o que fazemos.</p>
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-gray-50 p-6 rounded text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mx-auto mb-4">
+<i class="ri-heart-line text-primary ri-xl"></i>
+</div>
+<h3 class="font-bold mb-2">Paixão</h3>
+<p class="text-gray-600 text-sm">Amamos o que fazemos e colocamos nosso coração em cada peça</p>
+</div>
+<div class="bg-gray-50 p-6 rounded text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mx-auto mb-4">
+<i class="ri-recycle-line text-primary ri-xl"></i>
+</div>
+<h3 class="font-bold mb-2">Sustentabilidade</h3>
+<p class="text-gray-600 text-sm">Comprometidos com práticas responsáveis e materiais sustentáveis</p>
+</div>
+<div class="bg-gray-50 p-6 rounded text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mx-auto mb-4">
+<i class="ri-community-line text-primary ri-xl"></i>
+</div>
+<h3 class="font-bold mb-2">Comunidade</h3>
+<p class="text-gray-600 text-sm">Valorizamos conexões e apoiamos nossa comunidade local</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Members Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-12 text-center">Conheça Nossa Equipe</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Team Member 1 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520man%2520with%2520short%2520hair%2520wearing%2520a%2520stylish%2520black%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=201&orientation=portrait" alt="Lucas Mendes" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Lucas Mendes</h3>
+<p class="text-gray-600 text-sm mb-4">Fundador & Diretor Criativo</p>
+<p class="text-gray-700 text-sm mb-6">Nascido e criado em Mindelo, Lucas fundou a LAJJ em 2018 com a visão de criar uma marca de streetwear que representasse a cultura cabo-verdiana no cenário global da moda.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-twitter-x-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520woman%2520with%2520natural%2520curly%2520hair%2520wearing%2520a%2520stylish%2520white%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=202&orientation=portrait" alt="Sofia Tavares" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Sofia Tavares</h3>
+<p class="text-gray-600 text-sm mb-4">Diretora de Design</p>
+<p class="text-gray-700 text-sm mb-6">Com formação em Design de Moda pela Central Saint Martins, Sofia traz sua experiência internacional para criar designs que mesclam influências africanas e europeias.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-behance-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520man%2520with%2520glasses%2520wearing%2520a%2520stylish%2520sand-colored%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=203&orientation=portrait" alt="Miguel Fernandes" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Miguel Fernandes</h3>
+<p class="text-gray-600 text-sm mb-4">Diretor de Operações</p>
+<p class="text-gray-700 text-sm mb-6">Com mais de 10 anos de experiência no setor têxtil, Miguel supervisiona toda a cadeia de produção, garantindo qualidade e práticas sustentáveis em cada etapa.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-twitter-x-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 4 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520woman%2520with%2520short%2520hair%2520wearing%2520a%2520stylish%2520black%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=204&orientation=portrait" alt="Carla Santos" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Carla Santos</h3>
+<p class="text-gray-600 text-sm mb-4">Diretora de Marketing</p>
+<p class="text-gray-700 text-sm mb-6">Especialista em marketing digital, Carla lidera as estratégias de comunicação e branding da LAJJ, criando campanhas que capturam a essência da marca.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-pinterest-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 5 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520woman%2520with%2520braided%2520hair%2520wearing%2520a%2520stylish%2520white%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=205&orientation=portrait" alt="Ana Oliveira" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Ana Oliveira</h3>
+<p class="text-gray-600 text-sm mb-4">Estilista Sênior</p>
+<p class="text-gray-700 text-sm mb-6">Com um olhar apurado para tendências e detalhes, Ana é responsável por traduzir os conceitos criativos em peças vestíveis que mantêm a identidade da marca.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-behance-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 6 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520man%2520with%2520beard%2520wearing%2520a%2520stylish%2520black%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=206&orientation=portrait" alt="Pedro Costa" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Pedro Costa</h3>
+<p class="text-gray-600 text-sm mb-4">Gerente de E-commerce</p>
+<p class="text-gray-700 text-sm mb-6">Especialista em experiência do usuário e comércio digital, Pedro lidera a estratégia online da LAJJ, garantindo uma experiência de compra perfeita.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-dribbble-line text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 7 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520man%2520with%2520stylish%2520haircut%2520wearing%2520a%2520sand-colored%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=207&orientation=portrait" alt="João Almeida" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">João Almeida</h3>
+<p class="text-gray-600 text-sm mb-4">Fotógrafo & Diretor Criativo</p>
+<p class="text-gray-700 text-sm mb-6">Com seu olhar único, João captura a essência da LAJJ em cada campanha, criando imagens que contam histórias e transmitem a identidade da marca.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-unsplash-line text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Team Member 8 -->
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520portrait%2520of%2520a%2520confident%2520young%2520Cape%2520Verdean%2520woman%2520with%2520natural%2520hair%2520wearing%2520a%2520stylish%2520black%2520shirt%2520against%2520a%2520neutral%2520background%2C%2520warm%2520natural%2520lighting%2C%2520professional%2520headshot%2520with%2520genuine%2520smile&width=400&height=500&seq=208&orientation=portrait" alt="Mariana Lopes" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-xl font-bold mb-1">Mariana Lopes</h3>
+<p class="text-gray-600 text-sm mb-4">Gerente de Sustentabilidade</p>
+<p class="text-gray-700 text-sm mb-6">Comprometida com práticas sustentáveis, Mariana lidera as iniciativas eco-friendly da LAJJ, buscando constantemente maneiras de reduzir o impacto ambiental.</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-instagram-line text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-linkedin-fill text-gray-700"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition">
+<i class="ri-twitter-x-fill text-gray-700"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Our Team Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="bg-primary text-white p-12 rounded text-center">
+<h2 class="text-3xl font-bold mb-6">Junte-se à Nossa Equipe</h2>
+<p class="text-lg mb-8 max-w-2xl mx-auto">Estamos sempre em busca de talentos apaixonados por moda, design e cultura. Se você se identifica com nossa missão e valores, queremos conhecer você.</p>
+<a href="/careers" class="bg-white text-primary px-8 py-3 font-semibold !rounded-button hover:bg-gray-100 transition whitespace-nowrap inline-block">VER VAGAS ABERTAS</a>
+</div>
+</div>
+</section>
+</div>
+<!-- Testimonials Page -->
+<div id="testimonials-tab" class="tab-content hidden">
+<!-- Testimonials Hero Section -->
+<section class="testimonial-hero relative h-[300px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="container mx-auto px-4 z-10">
+<h1 class="text-4xl md:text-5xl font-bold text-white text-center">Depoimentos</h1>
+<p class="text-xl text-white text-center mt-4">O que nossos clientes dizem sobre a LAJJ</p>
+</div>
+</section>
+<!-- Testimonials Filter Section -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center mb-12">
+<div class="mb-6 md:mb-0">
+<h2 class="text-2xl font-bold">Avaliações dos Clientes</h2>
+<div class="flex items-center mt-2">
+<div class="flex">
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-fill text-yellow-400"></i>
+<i class="ri-star-half-fill text-yellow-400"></i>
+</div>
+<span class="ml-2 text-gray-700">4.8 de 5 (243 avaliações)</span>
+</div>
+</div>
+<div class="flex space-x-4">
+<div class="relative">
+<button class="flex items-center px-4 py-2 border border-gray-300 rounded text-sm">
+<span>Filtrar por</span>
+<i class="ri-arrow-down-s-line ml-2"></i>
+</button>
+</div>
+<div class="relative">
+<button class="flex items-center px-4 py-2 border border-gray-300 rounded text-sm">
+<span>Ordenar por</span>
+<i class="ri-arrow-down-s-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Grid Section -->
+<section class="py-12 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520natural%2520hair%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=301&orientation=squarish" alt="Beatriz Rodrigues" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Beatriz Rodrigues</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"As camisetas da LAJJ são simplesmente perfeitas! O tecido é super macio e confortável, e o corte é exatamente como eu gosto. Já comprei três modelos diferentes e estou apaixonada por todos. Além disso, a entrega foi super rápida."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Essential Tee - Preto</span>
+<span>21/03/2025</span>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520short%2520hair%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=302&orientation=squarish" alt="Rafael Silva" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Rafael Silva</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Comprei o moletom oversized e estou muito satisfeito com a qualidade. O design é minimalista e elegante, exatamente como nas fotos. O tamanho ficou perfeito seguindo a tabela de medidas do site. Definitivamente vou comprar mais peças da LAJJ."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Oversized Hoodie - Areia</span>
+<span>15/03/2025</span>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520curly%2520hair%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=303&orientation=squarish" alt="Carolina Monteiro" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Carolina Monteiro</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Adoro a filosofia da marca e a qualidade das peças. Comprei a camiseta com estampa nas costas e recebo elogios sempre que a uso. O algodão é de ótima qualidade e não deforma após as lavagens. Já estou de olho na nova coleção!"</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Back Print Tee - Areia</span>
+<span>02/03/2025</span>
+</div>
+</div>
+<!-- Testimonial 4 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520glasses%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=304&orientation=squarish" alt="André Ferreira" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">André Ferreira</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Sou cliente da LAJJ há mais de um ano e todas as peças que comprei mantêm a qualidade mesmo após várias lavagens. O atendimento ao cliente é excelente, tive um problema com o tamanho e a troca foi super rápida e sem complicações."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Street Logo Tee - Preto</span>
+<span>25/02/2025</span>
+</div>
+</div>
+<!-- Testimonial 5 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520short%2520hair%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=305&orientation=squarish" alt="Mariana Costa" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Mariana Costa</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Comprei a camiseta crop e estou apaixonada! O corte é perfeito, nem muito curto nem muito longo. Combina com tudo e é super versátil. A entrega internacional para Portugal foi mais rápida do que eu esperava."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Crop Logo Tee - Branco</span>
+<span>18/02/2025</span>
+</div>
+</div>
+<!-- Testimonial 6 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520beard%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=306&orientation=squarish" alt="Tiago Santos" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Tiago Santos</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"As peças da LAJJ têm um design único que combina perfeitamente com meu estilo. A qualidade é excepcional e o preço justo pelo que se recebe. Já indiquei para vários amigos e todos ficaram igualmente satisfeitos."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Oversized Graphic Tee - Preto</span>
+<span>10/02/2025</span>
+</div>
+</div>
+<!-- Testimonial 7 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520braided%2520hair%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=307&orientation=squarish" alt="Daniela Oliveira" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Daniela Oliveira</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Adoro o compromisso da LAJJ com a sustentabilidade. As embalagens são eco-friendly e as etiquetas explicam como a peça foi produzida. Além disso, a qualidade é incrível e o design minimalista combina com tudo."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Essential Tee - Branco</span>
+<span>05/02/2025</span>
+</div>
+</div>
+<!-- Testimonial 8 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520man%2520with%2520stylish%2520haircut%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=308&orientation=squarish" alt="Bruno Alves" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Bruno Alves</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Comprei o boné e a camiseta da coleção nova e estou muito satisfeito. O material é de primeira qualidade e o design é único. O processo de compra foi super fácil e a entrega chegou antes do prazo previsto."</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Street Logo Tee & Cap - Preto</span>
+<span>28/01/2025</span>
+</div>
+</div>
+<!-- Testimonial 9 -->
+<div class="bg-white rounded shadow-sm p-6">
+<div class="flex items-start mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520young%2520woman%2520with%2520natural%2520hair%2520and%2520glasses%2520smiling%2520against%2520a%2520neutral%2520background%2C%2520warm%2520lighting%2C%2520casual%2520headshot&width=60&height=60&seq=309&orientation=squarish" alt="Patrícia Lima" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h3 class="font-bold">Patrícia Lima</h3>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"As peças da LAJJ são versáteis e combinam com qualquer ocasião. Uso tanto no dia a dia quanto em eventos mais arrumados. O tecido é de excelente qualidade e as costuras são perfeitas. Vale cada centavo investido!"</p>
+<div class="flex justify-between items-center text-sm text-gray-500">
+<span>Graphic Tee - Branco</span>
+<span>20/01/2025</span>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-12">
+<nav class="inline-flex">
+<a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-l-md hover:bg-gray-100">
+<i class="ri-arrow-left-s-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 bg-primary text-white">1</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 hover:bg-gray-100">2</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 hover:bg-gray-100">3</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-r-md hover:bg-gray-100">
+<i class="ri-arrow-right-s-line"></i>
+</a>
+</nav>
+</div>
+</div>
+</section>
+<!-- Leave a Review Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto bg-white rounded shadow-sm p-8">
+<h2 class="text-2xl font-bold mb-6 text-center">Deixe sua Avaliação</h2>
+<form>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Avaliação Geral</label>
+<div class="star-rating">
+<input type="radio" id="star5" name="rating" value="5">
+<label for="star5"><i class="ri-star-fill"></i></label>
+<input type="radio" id="star4" name="rating" value="4">
+<label for="star4"><i class="ri-star-fill"></i></label>
+<input type="radio" id="star3" name="rating" value="3">
+<label for="star3"><i class="ri-star-fill"></i></label>
+<input type="radio" id="star2" name="rating" value="2">
+<label for="star2"><i class="ri-star-fill"></i></label>
+<input type="radio" id="star1" name="rating" value="1">
+<label for="star1"><i class="ri-star-fill"></i></label>
+</div>
+</div>
+<div class="mb-6">
+<label for="product" class="block text-sm font-medium text-gray-700 mb-2">Produto</label>
+<div class="relative">
+<select id="product" class="w-full px-4 py-3 border border-gray-300 rounded text-sm appearance-none pr-8">
+<option value="">Selecione o produto</option>
+<option value="essential-tee-black">Essential Tee - Preto</option>
+<option value="essential-tee-white">Essential Tee - Branco</option>
+<option value="oversized-tee-sand">Oversized Tee - Areia</option>
+<option value="graphic-tee-white">Graphic Tee - Branco</option>
+<option value="back-print-tee-sand">Back Print Tee - Areia</option>
+<option value="oversized-graphic-tee-black">Oversized Graphic Tee - Preto</option>
+</select>
+<div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label for="review-title" class="block text-sm font-medium text-gray-700 mb-2">Título</label>
+<input type="text" id="review-title" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="Resumo da sua experiência">
+</div>
+<div class="mb-6">
+<label for="review-content" class="block text-sm font-medium text-gray-700 mb-2">Avaliação</label>
+<textarea id="review-content" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded text-sm resize-none" placeholder="Compartilhe sua experiência com o produto..."></textarea>
+</div>
+<div class="mb-6">
+<label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="Seu nome">
+</div>
+<div class="mb-6">
+<label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded text-sm" placeholder="Seu email (não será publicado)">
+</div>
+<div class="mb-6">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark mr-3"></span>
+<span class="text-sm text-gray-700">Concordo com os termos e condições e política de privacidade</span>
+</label>
+</div>
+<button type="submit" class="bg-primary text-white px-8 py-3 font-semibold !rounded-button hover:bg-gray-900 transition whitespace-nowrap">ENVIAR AVALIAÇÃO</button>
+</form>
+</div>
+</div>
+</section>
+</div>
+<!-- Products Overview Page -->
+<div id="products-tab" class="tab-content hidden">
+<!-- Products Hero Section -->
+<section class="product-hero relative h-[300px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="container mx-auto px-4 z-10">
+<h1 class="text-4xl md:text-5xl font-bold text-white text-center">Nossos Produtos</h1>
+<p class="text-xl text-white text-center mt-4">Essenciais de streetwear com design minimalista e alta qualidade</p>
+</div>
+</section>
+<!-- Products Categories Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Category 1 -->
+<div class="relative overflow-hidden group rounded">
+<img src="https://readdy.ai/api/search-image?query=collection%252520of%252520minimalist%252520black%252520t-shirts%252520with%252520various%252520designs%252520laid%252520flat%252520on%252520neutral%252520background%252520professional%252520product%252520photography%252520with%252520clean%252520composition%252520and%252520soft%252520shadows%252520showing%252520texture%252520and%252520details&width=600&height=400&seq=401&orientation=landscape" alt="Camisetas" class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+<div class="text-center">
+<h3 class="text-white text-2xl font-bold mb-4">CAMISETAS</h3>
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER PRODUTOS</button>
+</div>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="relative overflow-hidden group rounded">
+<img src="https://readdy.ai/api/search-image?query=collection%252520of%252520minimalist%252520hoodies%252520in%252520black%252520white%252520and%252520sand%252520colors%252520laid%252520flat%252520on%252520neutral%252520background%252520professional%252520product%252520photography%252520with%252520clean%252520composition%252520and%252520soft%252520shadows%252520showing%252520texture%252520and%252520details&width=600&height=400&seq=402&orientation=landscape" alt="Moletons" class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+<div class="text-center">
+<h3 class="text-white text-2xl font-bold mb-4">MOLETONS</h3>
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER PRODUTOS</button>
+</div>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="relative overflow-hidden group rounded">
+<img src="https://readdy.ai/api/search-image?query=collection%252520of%252520minimalist%252520accessories%252520including%252520caps%252520beanies%252520and%252520bags%252520in%252520black%252520white%252520and%252520sand%252520colors%252520laid%252520flat%252520on%252520neutral%252520background%252520professional%252520product%252520photography%252520with%252520clean%252520composition%252520and%252520soft%252520shadows&width=600&height=400&seq=403&orientation=landscape" alt="Acessórios" class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+<div class="text-center">
+<h3 class="text-white text-2xl font-bold mb-4">ACESSÓRIOS</h3>
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER PRODUTOS</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Products Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-12 text-center">PRODUTOS EM DESTAQUE</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Product 1 -->
+<div class="product-card group relative">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%252520male%252520model%252520wearing%252520a%252520minimalist%252520black%252520t-shirt%252520with%252520small%252520white%252520logo%252520on%252520chest%252520against%252520neutral%252520background%252520professional%252520fashion%252520photography%252520with%252520soft%252520lighting%252520and%252520subtle%252520shadows%252520clean%252520composition&width=600&height=800&seq=404&orientation=portrait" alt="Essential Tee" class="w-full h-[350px] object-cover object-top">
+<div class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER DETALHES</button>
+</div>
+</div>
+<div class="pt-4 pb-2">
+<h3 class="text-lg font-medium">Essential Tee</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-900 font-medium">€49,00</span>
+<div class="flex space-x-1">
+<span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card group relative">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%252520female%252520model%252520wearing%252520an%252520oversized%252520sand-colored%252520t-shirt%252520with%252520minimalist%252520black%252520logo%252520against%252520neutral%252520background%252520professional%252520fashion%252520photography%252520with%252520soft%252520lighting%252520and%252520subtle%252520shadows%252520clean%252520composition&width=600&height=800&seq=405&orientation=portrait" alt="Oversized Tee" class="w-full h-[350px] object-cover object-top">
+<div class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER DETALHES</button>
+</div>
+</div>
+<div class="pt-4 pb-2">
+<h3 class="text-lg font-medium">Oversized Tee</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-900 font-medium">€59,00</span>
+<div class="flex space-x-1">
+<span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card group relative">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%252520male%252520model%252520wearing%252520a%252520black%252520hoodie%252520with%252520minimalist%252520white%252520logo%252520against%252520neutral%252520background%252520professional%252520fashion%252520photography%252520with%252520soft%252520lighting%252520and%252520subtle%252520shadows%252520clean%252520composition&width=600&height=800&seq=406&orientation=portrait" alt="Essential Hoodie" class="w-full h-[350px] object-cover object-top">
+<div class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER DETALHES</button>
+</div>
+</div>
+<div class="pt-4 pb-2">
+<h3 class="text-lg font-medium">Essential Hoodie</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-900 font-medium">€89,00</span>
+<div class="flex space-x-1">
+<span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card group relative">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%252520female%252520model%252520wearing%252520a%252520white%252520crop%252520top%252520t-shirt%252520with%252520minimalist%252520black%252520logo%252520against%252520neutral%252520background%252520professional%252520fashion%252520photography%252520with%252520soft%252520lighting%252520and%252520subtle%252520shadows%252520clean%252520composition&width=600&height=800&seq=407&orientation=portrait" alt="Crop Logo Tee" class="w-full h-[350px] object-cover object-top">
+<div class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300">
+<button class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap">VER DETALHES</button>
+</div>
+</div>
+<div class="pt-4 pb-2">
+<h3 class="text-lg font-medium">Crop Logo Tee</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-900 font-medium">€45,00</span>
+<div class="flex space-x-1">
+<span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+<span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Materials and Quality Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+<img src="https://readdy.ai/api/search-image?query=close-up%2520of%2520premium%2520cotton%2520fabric%2520texture%2520showing%2520fine%2520details%2520and%2520weave%2520pattern%2C%2520soft%2520natural%2520lighting%2520highlighting%2520the%2520material%2520quality%2C%2520neutral%2520background%2C%2520professional%2520macro%2520photography%2520with%2520shallow%2520depth%2520of%2520field&width=800&height=600&seq=408&orientation=landscape" alt="Materiais de Qualidade" class="w-full h-auto rounded">
+</div>
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold mb-6">MATERIAIS E QUALIDADE</h2>
+<p class="text-gray-700 mb-6">Na LAJJ, acreditamos que a qualidade começa com a escolha dos materiais. Utilizamos algodão orgânico de alta densidade (220-250 gsm) para nossas camisetas, garantindo durabilidade e conforto excepcional.</p>
+<p class="text-gray-700 mb-6">Nossos moletons são confeccionados com uma mistura premium de algodão e poliéster (350 gsm), oferecendo o equilíbrio perfeito entre maciez e resistência. Todos os tecidos passam por um processo de pré-lavagem para minimizar o encolhimento.</p>
+<p class="text-gray-700 mb-8">Cada peça é cuidadosamente confeccionada com atenção meticulosa aos detalhes, desde as costuras reforçadas até os acabamentos precisos. Nosso compromisso com a qualidade garante que suas peças LAJJ durem por anos.</p>
+<button class="border border-primary text-primary px-8 py-3 font-semibold !rounded-button hover:bg-primary hover:text-white transition whitespace-nowrap">GUIA DE CUIDADOS</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Size Guide Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-12 text-center">GUIA DE TAMANHOS</h2>
+<div class="max-w-4xl mx-auto bg-white rounded shadow-sm p-8">
+<div class="mb-8">
+<div class="tab-switcher inline-flex mb-6">
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap active" onclick="switchSizeTab('tshirts')">Camisetas</button>
+<button class="tab-button px-6 py-2 !rounded-full whitespace-nowrap" onclick="switchSizeTab('hoodies')">Moletons</button>
+</div>
+<div id="tshirts-size" class="size-tab-content">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-100">
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Tamanho</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Busto (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Comprimento (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Ombro (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Manga (cm)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">P</td>
+<td class="px-4 py-3 text-sm text-gray-700">96</td>
+<td class="px-4 py-3 text-sm text-gray-700">68</td>
+<td class="px-4 py-3 text-sm text-gray-700">42</td>
+<td class="px-4 py-3 text-sm text-gray-700">20</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">M</td>
+<td class="px-4 py-3 text-sm text-gray-700">102</td>
+<td class="px-4 py-3 text-sm text-gray-700">70</td>
+<td class="px-4 py-3 text-sm text-gray-700">44</td>
+<td class="px-4 py-3 text-sm text-gray-700">21</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">G</td>
+<td class="px-4 py-3 text-sm text-gray-700">108</td>
+<td class="px-4 py-3 text-sm text-gray-700">72</td>
+<td class="px-4 py-3 text-sm text-gray-700">46</td>
+<td class="px-4 py-3 text-sm text-gray-700">22</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">GG</td>
+<td class="px-4 py-3 text-sm text-gray-700">114</td>
+<td class="px-4 py-3 text-sm text-gray-700">74</td>
+<td class="px-4 py-3 text-sm text-gray-700">48</td>
+<td class="px-4 py-3 text-sm text-gray-700">23</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="hoodies-size" class="size-tab-content hidden">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-100">
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Tamanho</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Busto (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Comprimento (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Ombro (cm)</th>
+<th class="px-4 py-3 text-left text-sm font-medium text-gray-700">Manga (cm)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">P</td>
+<td class="px-4 py-3 text-sm text-gray-700">108</td>
+<td class="px-4 py-3 text-sm text-gray-700">70</td>
+<td class="px-4 py-3 text-sm text-gray-700">45</td>
+<td class="px-4 py-3 text-sm text-gray-700">62</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">M</td>
+<td class="px-4 py-3 text-sm text-gray-700">114</td>
+<td class="px-4 py-3 text-sm text-gray-700">72</td>
+<td class="px-4 py-3 text-sm text-gray-700">47</td>
+<td class="px-4 py-3 text-sm text-gray-700">63</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">G</td>
+<td class="px-4 py-3 text-sm text-gray-700">120</td>
+<td class="px-4 py-3 text-sm text-gray-700">74</td>
+<td class="px-4 py-3 text-sm text-gray-700">49</td>
+<td class="px-4 py-3 text-sm text-gray-700">64</td>
+</tr>
+<tr>
+<td class="px-4 py-3 text-sm text-gray-700">GG</td>
+<td class="px-4 py-3 text-sm text-gray-700">126</td>
+<td class="px-4 py-3 text-sm text-gray-700">76</td>
+<td class="px-4 py-3 text-sm text-gray-700">51</td>
+<td class="px-4 py-3 text-sm text-gray-700">65</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="text-gray-700 text-sm">
+<p class="mb-4"><strong>Como medir:</strong></p>
+<ul class="list-disc pl-5 space-y-2">
+<li><strong>Busto:</strong> Meça a circunferência na parte mais larga do peito.</li>
+<li><strong>Comprimento:</strong> Meça do topo do ombro até a barra da peça.</li>
+<li><strong>Ombro:</strong> Meça de uma extremidade do ombro à outra.</li>
+<li><strong>Manga:</strong> Meça do ombro até o punho (para moletons) ou do ombro até o fim da manga (para camisetas).</li>
+</ul>
+<p class="mt-4">As medidas podem variar em ±2cm devido ao processo de fabricação.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sustainability Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold mb-6">COMPROMISSO COM A SUSTENTABILIDADE</h2>
+<p class="text-gray-700 mb-6">Na LAJJ, acreditamos que a moda pode e deve ser responsável. Nosso compromisso com a sustentabilidade vai além de palavras – está integrado em cada aspecto do nosso negócio.</p>
+<div class="space-y-6 mb-8">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
+<i class="ri-recycle-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium mb-2">Materiais Sustentáveis</h3>
+<p class="text-gray-700 text-sm">Utilizamos algodão orgânico certificado GOTS, cultivado sem pesticidas ou fertilizantes químicos, reduzindo significativamente o impacto ambiental.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
+<i class="ri-water-flash-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium mb-2">Processos Responsáveis</h3>
+<p class="text-gray-700 text-sm">Nossos parceiros de produção utilizam tecnologias de economia de água e energia, e trabalhamos apenas com fábricas que garantem condições de trabalho justas.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
+<i class="ri-leaf-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium mb-2">Embalagens Eco-friendly</h3>
+<p class="text-gray-700 text-sm">Todas as nossas embalagens são feitas de materiais reciclados e biodegradáveis, eliminando o plástico de uso único da nossa cadeia de suprimentos.</p>
+</div>
+</div>
+</div>
+<button class="border border-primary text-primary px-8 py-3 font-semibold !rounded-button hover:bg-primary hover:text-white transition whitespace-nowrap">SAIBA MAIS</button>
+</div>
+<div class="md:w-1/2 mt-10 md:mt-0 md:pl-12">
+<img src="https://readdy.ai/api/search-image?query=sustainable%2520fashion%2520production%2520showing%2520eco-friendly%2520textiles%2520and%2520natural%2520dyes%2520in%2520a%2520clean%2520workshop%2520environment%2C%2520hands%2520working%2520with%2520organic%2520cotton%2520fabric%2C%2520soft%2520natural%2520lighting%2C%2520professional%2520documentary%2520style%2520photography&width=800&height=600&seq=409&orientation=landscape" alt="Sustentabilidade" class="w-full h-auto rounded">
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-16 bg-primary">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold mb-6 text-white">DESCUBRA NOSSA COLEÇÃO</h2>
+<p class="text-white text-lg mb-8 max-w-2xl mx-auto">Explore nossa linha completa de essenciais streetwear minimalistas. Peças atemporais, design distintivo e qualidade excepcional.</p>
+<a href="/shop" class="bg-white text-primary px-8 py-3 font-semibold !rounded-button hover:bg-gray-100 transition whitespace-nowrap inline-block">COMPRAR AGORA</a>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="bg-black text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<h3 class="text-xl font-bold mb-6">LAJJ</h3>
+<p class="text-gray-400 mb-6">Essenciais streetwear minimalistas inspirados em Cabo Verde e na cultura de rua global.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-instagram-line text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-facebook-fill text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-twitter-x-fill text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-tiktok-fill text-white ri-lg"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">LOJA</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Novidades</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Mais Vendidos</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Camisetas</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Moletons</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Acessórios</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">AJUDA</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento ao Cliente</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Rastrear Pedido</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Devoluções e Trocas</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Informações de Envio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Guia de Tamanhos</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">CONTATO</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-map-pin-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">Av 5 de Julho, São Vicente, Cabo Verde</span>
+</li>
+<li class="flex items-start">
+<i class="ri-mail-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">info@lajj.com</span>
+</li>
+<li class="flex items-start">
+<i class="ri-phone-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">+238 231 34 34</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 LAJJ. Todos os direitos reservados.</p>
+<div class="flex items-center space-x-4">
+<i class="ri-visa-fill text-gray-400 ri-lg"></i>
+<i class="ri-mastercard-fill text-gray-400 ri-lg"></i>
+<i class="ri-paypal-fill text-gray-400 ri-lg"></i>
+<i class="ri-apple-fill text-gray-400 ri-lg"></i>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Header scroll effect
+const header = document.querySelector('header');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 50) {
+header.classList.add('shadow-md');
+} else {
+header.classList.remove('shadow-md');
+}
+});
+// Mobile menu functionality
+window.toggleMobileMenu = function() {
+const nav = document.querySelector('nav');
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4');
+} else {
+nav.classList.add('hidden');
+nav.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4');
+}
+};
+// Tab switching functionality
+window.switchTab = function(tabId) {
+document.querySelectorAll('.tab-button').forEach(button => {
+button.classList.remove('active');
+});
+document.querySelectorAll('.tab-content').forEach(content => {
+content.classList.add('hidden');
+});
+event.target.classList.add('active');
+document.getElementById(tabId + '-tab').classList.remove('hidden');
+};
+// FAQ category switching
+window.switchFaqCategory = function(category) {
+document.querySelectorAll('.tab-button').forEach(button => {
+if (button.textContent.toLowerCase().includes(category) || category === 'all') {
+button.classList.add('active');
+} else {
+button.classList.remove('active');
+}
+});
+document.querySelectorAll('.faq-category').forEach(content => {
+if (category === 'all') {
+content.classList.remove('hidden');
+} else if (content.classList.contains(category)) {
+content.classList.remove('hidden');
+} else {
+content.classList.add('hidden');
+}
+});
+};
+// Size guide tab switching
+window.switchSizeTab = function(tabId) {
+const buttons = document.querySelectorAll('.tab-switcher .tab-button');
+const contents = document.querySelectorAll('.size-tab-content');
+buttons.forEach(button => {
+if (button.textContent.toLowerCase().includes(tabId)) {
+button.classList.add('active');
+} else {
+button.classList.remove('active');
+}
+});
+contents.forEach(content => {
+if (content.id.includes(tabId)) {
+content.classList.remove('hidden');
+} else {
+content.classList.add('hidden');
+}
+});
+};
+// Accordion functionality
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+accordionHeaders.forEach(header => {
+header.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('i');
+if (content.classList.contains('active')) {
+content.classList.remove('active');
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+} else {
+content.classList.add('active');
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+}
+});
+});
+// Handle navigation
+document.querySelectorAll('a[href^="/"]').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const path = this.getAttribute('href');
+console.log(`Navegando para: ${path}`);
+// Here you would typically implement your routing logic
+// For demonstration, we'll just log the navigation
+});
+});
+});
+</script>
+</body>
+</html>

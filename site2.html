@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAJJ - Marca de Roupas Streetwear</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#000000", secondary: "#E6D5C3" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      }
+      .hero-section {
+      background-image: url('https://readdy.ai/api/search-image?query=modern%2520streetwear%2520fashion%2520photoshoot%2520with%2520diverse%2520young%2520models%2520wearing%2520stylish%2520black%2520and%2520white%2520t-shirts%2520against%2520a%2520minimalist%2520urban%2520background%2520with%2520soft%2520natural%2520lighting%2520creating%2520dramatic%2520shadows%2520professional%2520photography&width=1920&height=1080&seq=1&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+      }
+      .newsletter-section {
+      background-color: #f9f9f9;
+      }
+      input:focus, button:focus {
+      outline: none;
+      }
+      .custom-checkbox {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      }
+      .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      }
+      .checkmark {
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      position: relative;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+      background-color: #000;
+      border-color: #000;
+      }
+      .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+      display: block;
+      }
+      .custom-range {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 2px;
+      background: #ddd;
+      outline: none;
+      margin: 10px 0;
+      }
+      .custom-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #000;
+      cursor: pointer;
+      border-radius: 50%;
+      }
+      .custom-range::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #000;
+      cursor: pointer;
+      border-radius: 50%;
+      }
+      .custom-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      }
+      .custom-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+      }
+      .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .slider {
+      background-color: #000;
+      }
+      input:checked + .slider:before {
+      transform: translateX(20px);
+      }
+      .tab-switcher {
+      display: flex;
+      background-color: #f1f1f1;
+      border-radius: 9999px;
+      padding: 4px;
+      }
+      .tab-button {
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      white-space: nowrap;
+      }
+      .tab-button.active {
+      background-color: #000;
+      color: white;
+      }
+      .product-card:hover .quick-view {
+      opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="#" class="text-3xl font-['Pacifico'] text-primary">LAJJ</a>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a
+            href="index.html"
+            class="text-primary hover:text-gray-600 font-medium"
+            >Início</a
+          >
+          <a
+            href="shop.html"
+            class="text-gray-600 hover:text-primary font-medium"
+            >Loja</a
+          >
+          <a
+            href="about.html"
+            class="text-gray-600 hover:text-primary font-medium"
+            >Sobre</a
+          >
+          <a
+            href="contact.html"
+            class="text-gray-600 hover:text-primary font-medium"
+            >Contato</a
+          >
+        </nav>
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 flex items-center justify-center relative">
+            <i class="ri-search-line text-gray-700 ri-lg"></i>
+          </div>
+          <div class="w-10 h-10 flex items-center justify-center relative">
+            <i class="ri-user-line text-gray-700 ri-lg"></i>
+          </div>
+          <div class="w-10 h-10 flex items-center justify-center relative">
+            <i class="ri-shopping-bag-line text-gray-700 ri-lg"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
+              >3</span
+            >
+          </div>
+          <div class="md:hidden w-10 h-10 flex items-center justify-center">
+            <i class="ri-menu-line text-gray-700 ri-lg"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section h-screen relative flex items-center">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="container mx-auto px-4 z-10">
+        <div class="max-w-2xl">
+          <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+            DEFINA SEU ESTILO
+          </h1>
+          <p class="text-xl text-white mb-8">
+            Essenciais streetwear para os ousados e destemidos. Inspirado em
+            Cabo Verde, projetado para o mundo.
+          </p>
+          <button
+            class="bg-white text-primary px-8 py-3 font-semibold text-lg !rounded-button hover:bg-gray-100 transition whitespace-nowrap"
+          >
+            COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- New Arrivals Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">NOVIDADES</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Product 1 -->
+          <div class="product-card group relative">
+            <div class="relative overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520a%2520minimalist%2520black%2520t-shirt%2520with%2520small%2520white%2520logo%2520on%2520chest%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=2&orientation=portrait"
+                alt="Black T-shirt"
+                class="w-full h-[400px] object-cover object-top"
+              />
+              <div
+                class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  QUICK VIEW
+                </button>
+              </div>
+            </div>
+            <div class="pt-4 pb-2">
+              <h3 class="text-lg font-medium">Essential Tee</h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-900 font-medium">$49.00</span>
+                <div class="flex space-x-1">
+                  <span
+                    class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-gray-500 border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-secondary border border-gray-300"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="product-card group relative">
+            <div class="relative overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520an%2520oversized%2520sand-colored%2520t-shirt%2520with%2520minimalist%2520black%2520logo%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=3&orientation=portrait"
+                alt="Sand T-shirt"
+                class="w-full h-[400px] object-cover object-top"
+              />
+              <div
+                class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  QUICK VIEW
+                </button>
+              </div>
+            </div>
+            <div class="pt-4 pb-2">
+              <h3 class="text-lg font-medium">Oversized Tee</h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-900 font-medium">$59.00</span>
+                <div class="flex space-x-1">
+                  <span
+                    class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-white border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-secondary border border-gray-300"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="product-card group relative">
+            <div class="relative overflow-hidden">
+              <img
+                src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520a%2520white%2520t-shirt%2520with%2520minimalist%2520black%2520graphic%2520design%2520on%2520front%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=4&orientation=portrait"
+                alt="White Graphic Tee"
+                class="w-full h-[400px] object-cover object-top"
+              />
+              <div
+                class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  QUICK VIEW
+                </button>
+              </div>
+            </div>
+            <div class="pt-4 pb-2">
+              <h3 class="text-lg font-medium">Graphic Tee</h3>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-900 font-medium">$55.00</span>
+                <div class="flex space-x-1">
+                  <span
+                    class="w-4 h-4 rounded-full bg-white border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-gray-500 border border-gray-300"
+                  ></span>
+                  <span
+                    class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <button
+            class="border border-primary text-primary px-8 py-3 font-semibold !rounded-button hover:bg-primary hover:text-white transition whitespace-nowrap"
+          >
+            VIEW ALL
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Best Sellers Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">MAIS VENDIDOS</h2>
+        <div class="relative">
+          <div class="flex overflow-x-auto pb-8 gap-6 hide-scrollbar">
+            <!-- Best Seller 1 -->
+            <div class="min-w-[300px] max-w-[300px]">
+              <div class="product-card group relative">
+                <div class="relative overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520a%2520black%2520t-shirt%2520with%2520minimalist%2520white%2520graphic%2520design%2520on%2520front%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=5&orientation=portrait"
+                    alt="Black Graphic Tee"
+                    class="w-full h-[350px] object-cover object-top"
+                  />
+                  <div
+                    class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+                  >
+                    <button
+                      class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                    >
+                      QUICK VIEW
+                    </button>
+                  </div>
+                </div>
+                <div class="pt-4 pb-2">
+                  <h3 class="text-lg font-medium">Street Logo Tee</h3>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-gray-900 font-medium">$49.00</span>
+                    <div class="flex space-x-1">
+                      <span
+                        class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                      ></span>
+                      <span
+                        class="w-4 h-4 rounded-full bg-white border border-gray-300"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Best Seller 2 -->
+            <div class="min-w-[300px] max-w-[300px]">
+              <div class="product-card group relative">
+                <div class="relative overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520a%2520white%2520crop%2520top%2520t-shirt%2520with%2520minimalist%2520black%2520logo%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=6&orientation=portrait"
+                    alt="White Crop Top"
+                    class="w-full h-[350px] object-cover object-top"
+                  />
+                  <div
+                    class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+                  >
+                    <button
+                      class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                    >
+                      QUICK VIEW
+                    </button>
+                  </div>
+                </div>
+                <div class="pt-4 pb-2">
+                  <h3 class="text-lg font-medium">Crop Logo Tee</h3>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-gray-900 font-medium">$45.00</span>
+                    <div class="flex space-x-1">
+                      <span
+                        class="w-4 h-4 rounded-full bg-white border border-gray-300"
+                      ></span>
+                      <span
+                        class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Best Seller 3 -->
+            <div class="min-w-[300px] max-w-[300px]">
+              <div class="product-card group relative">
+                <div class="relative overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520a%2520sand-colored%2520oversized%2520t-shirt%2520with%2520minimalist%2520black%2520graphic%2520on%2520back%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=7&orientation=portrait"
+                    alt="Sand Oversized Tee"
+                    class="w-full h-[350px] object-cover object-top"
+                  />
+                  <div
+                    class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+                  >
+                    <button
+                      class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                    >
+                      QUICK VIEW
+                    </button>
+                  </div>
+                </div>
+                <div class="pt-4 pb-2">
+                  <h3 class="text-lg font-medium">Back Print Tee</h3>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-gray-900 font-medium">$55.00</span>
+                    <div class="flex space-x-1">
+                      <span
+                        class="w-4 h-4 rounded-full bg-secondary border border-gray-300"
+                      ></span>
+                      <span
+                        class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Best Seller 4 -->
+            <div class="min-w-[300px] max-w-[300px]">
+              <div class="product-card group relative">
+                <div class="relative overflow-hidden">
+                  <img
+                    src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520a%2520black%2520oversized%2520t-shirt%2520with%2520minimalist%2520white%2520graphic%2520design%2520on%2520front%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition&width=600&height=800&seq=8&orientation=portrait"
+                    alt="Black Oversized Tee"
+                    class="w-full h-[350px] object-cover object-top"
+                  />
+                  <div
+                    class="quick-view opacity-0 absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300"
+                  >
+                    <button
+                      class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                    >
+                      QUICK VIEW
+                    </button>
+                  </div>
+                </div>
+                <div class="pt-4 pb-2">
+                  <h3 class="text-lg font-medium">Oversized Graphic Tee</h3>
+                  <div class="flex justify-between items-center mt-2">
+                    <span class="text-gray-900 font-medium">$59.00</span>
+                    <div class="flex space-x-1">
+                      <span
+                        class="w-4 h-4 rounded-full bg-black border border-gray-300"
+                      ></span>
+                      <span
+                        class="w-4 h-4 rounded-full bg-white border border-gray-300"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-md w-10 h-10 flex items-center justify-center z-10 -ml-5 hover:bg-gray-100"
+          >
+            <i class="ri-arrow-left-s-line text-gray-700 ri-lg"></i>
+          </button>
+          <button
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-md w-10 h-10 flex items-center justify-center z-10 -mr-5 hover:bg-gray-100"
+          >
+            <i class="ri-arrow-right-s-line text-gray-700 ri-lg"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Our Story Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+            <img
+              src="https://readdy.ai/api/search-image?query=beautiful%2520landscape%2520of%2520Cape%2520Verde%2520showing%2520coastal%2520cliffs%2520and%2520beaches%2520with%2520clear%2520blue%2520water%2520and%2520sandy%2520shores%2520under%2520bright%2520sunlight%2520with%2520dramatic%2520clouds%2520in%2520sky%2520professional%2520travel%2520photography%2520with%2520vibrant%2520colors&width=800&height=600&seq=9&orientation=landscape"
+              alt="Cape Verde Landscape"
+              class="w-full h-auto rounded"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-6">NOSSA HISTÓRIA</h2>
+            <p class="text-gray-700 mb-6">
+              Nascida nas vibrantes ruas de Cabo Verde e inspirada pela cultura
+              de rua global, a LAJJ representa a fusão entre a herança das ilhas
+              e o estilo urbano contemporâneo. Nossa missão é criar essenciais
+              streetwear minimalistas que potencializam a autoexpressão.
+            </p>
+            <p class="text-gray-700 mb-8">
+              Cada peça é elaborada com atenção aos detalhes, utilizando
+              materiais premium que garantem conforto e durabilidade.
+              Acreditamos em criar designs atemporais que transcendem
+              tendências, mantendo uma identidade distintiva.
+            </p>
+            <button
+              class="border border-primary text-primary px-8 py-3 font-semibold !rounded-button hover:bg-primary hover:text-white transition whitespace-nowrap"
+            >
+              SAIBA MAIS
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Shop By Category Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">
+          COMPRE POR CATEGORIA
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Category 1 -->
+          <div class="relative overflow-hidden group rounded">
+            <img
+              src="https://readdy.ai/api/search-image?query=collection%2520of%2520minimalist%2520black%2520t-shirts%2520with%2520various%2520designs%2520laid%2520flat%2520on%2520neutral%2520background%2520professional%2520product%2520photography%2520with%2520clean%2520composition%2520and%2520soft%2520shadows%2520showing%2520texture%2520and%2520details&width=600&height=400&seq=10&orientation=landscape"
+              alt="T-Shirts"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+            >
+              <div class="text-center">
+                <h3 class="text-white text-2xl font-bold mb-4">T-SHIRTS</h3>
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  SHOP NOW
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Category 2 -->
+          <div class="relative overflow-hidden group rounded">
+            <img
+              src="https://readdy.ai/api/search-image?query=collection%2520of%2520minimalist%2520hoodies%2520in%2520black%2520white%2520and%2520sand%2520colors%2520laid%2520flat%2520on%2520neutral%2520background%2520professional%2520product%2520photography%2520with%2520clean%2520composition%2520and%2520soft%2520shadows%2520showing%2520texture%2520and%2520details&width=600&height=400&seq=11&orientation=landscape"
+              alt="Hoodies"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+            >
+              <div class="text-center">
+                <h3 class="text-white text-2xl font-bold mb-4">HOODIES</h3>
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  SHOP NOW
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Category 3 -->
+          <div class="relative overflow-hidden group rounded">
+            <img
+              src="https://readdy.ai/api/search-image?query=collection%2520of%2520minimalist%2520accessories%2520including%2520caps%2520beanies%2520and%2520bags%2520in%2520black%2520white%2520and%2520sand%2520colors%2520laid%2520flat%2520on%2520neutral%2520background%2520professional%2520product%2520photography%2520with%2520clean%2520composition%2520and%2520soft%2520shadows&width=600&height=400&seq=12&orientation=landscape"
+              alt="Accessories"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+            >
+              <div class="text-center">
+                <h3 class="text-white text-2xl font-bold mb-4">ACCESSORIES</h3>
+                <button
+                  class="bg-white text-primary px-6 py-2 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+                >
+                  SHOP NOW
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-4">JUNTE-SE À NOSSA COMUNIDADE</h2>
+          <p class="text-gray-700 mb-8">
+            Inscreva-se em nossa newsletter para receber ofertas exclusivas,
+            acesso antecipado a novos lançamentos e inspiração de estilo.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input
+              type="email"
+              placeholder="Seu endereço de email"
+              class="flex-grow px-4 py-3 border border-gray-300 rounded focus:border-primary text-sm"
+            />
+            <button
+              class="bg-primary text-white px-8 py-3 font-semibold !rounded-button hover:bg-gray-900 transition whitespace-nowrap"
+            >
+              INSCREVER-SE
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Instagram Feed Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          SIGA-NOS NO INSTAGRAM
+        </h2>
+        <p class="text-gray-700 mb-12 text-center max-w-2xl mx-auto">
+          Junte-se à nossa comunidade de mais de 50 mil seguidores e compartilhe
+          seu estilo LAJJ com #WEARINGLAJJ
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="relative group overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=young%2520stylish%2520person%2520wearing%2520LAJJ%2520streetwear%2520in%2520urban%2520setting%2520with%2520natural%2520lighting%2520candid%2520instagram%2520style%2520photo%2520showing%2520street%2520style%2520fashion%2520with%2520minimalist%2520aesthetic%2520authentic%2520lifestyle%2520photography&width=600&height=600&seq=13&orientation=squarish"
+              alt="Instagram Post 1"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300"
+            >
+              <i
+                class="ri-instagram-line text-white opacity-0 group-hover:opacity-100 ri-2x"
+              ></i>
+            </div>
+          </div>
+          <div class="relative group overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=young%2520stylish%2520person%2520wearing%2520LAJJ%2520streetwear%2520in%2520urban%2520setting%2520with%2520natural%2520lighting%2520candid%2520instagram%2520style%2520photo%2520showing%2520street%2520style%2520fashion%2520with%2520minimalist%2520aesthetic%2520authentic%2520lifestyle%2520photography&width=600&height=600&seq=14&orientation=squarish"
+              alt="Instagram Post 2"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300"
+            >
+              <i
+                class="ri-instagram-line text-white opacity-0 group-hover:opacity-100 ri-2x"
+              ></i>
+            </div>
+          </div>
+          <div class="relative group overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=young%2520stylish%2520person%2520wearing%2520LAJJ%2520streetwear%2520in%2520urban%2520setting%2520with%2520natural%2520lighting%2520candid%2520instagram%2520style%2520photo%2520showing%2520street%2520style%2520fashion%2520with%2520minimalist%2520aesthetic%2520authentic%2520lifestyle%2520photography&width=600&height=600&seq=15&orientation=squarish"
+              alt="Instagram Post 3"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300"
+            >
+              <i
+                class="ri-instagram-line text-white opacity-0 group-hover:opacity-100 ri-2x"
+              ></i>
+            </div>
+          </div>
+          <div class="relative group overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=young%2520stylish%2520person%2520wearing%2520LAJJ%2520streetwear%2520in%2520urban%2520setting%2520with%2520natural%2520lighting%2520candid%2520instagram%2520style%2520photo%2520showing%2520street%2520style%2520fashion%2520with%2520minimalist%2520aesthetic%2520authentic%2520lifestyle%2520photography&width=600&height=600&seq=16&orientation=squarish"
+              alt="Instagram Post 4"
+              class="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center transition-all duration-300"
+            >
+              <i
+                class="ri-instagram-line text-white opacity-0 group-hover:opacity-100 ri-2x"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h3 class="text-xl font-bold mb-6">LAJJ</h3>
+            <p class="text-gray-400 mb-6">
+              Minimalist streetwear essentials inspired by Cape Verde and global
+              street culture.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition"
+              >
+                <i class="ri-instagram-line text-white ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition"
+              >
+                <i class="ri-facebook-fill text-white ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition"
+              >
+                <i class="ri-twitter-x-fill text-white ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition"
+              >
+                <i class="ri-tiktok-fill text-white ri-lg"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-6">SHOP</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >New Arrivals</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Best Sellers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >T-Shirts</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Hoodies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Accessories</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-6">HELP</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Customer Service</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Track Order</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Returns & Exchanges</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Shipping Information</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Size Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-6">CONTACT</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="ri-map-pin-line text-gray-400 mr-3 mt-1"></i>
+                <span class="text-gray-400"
+                  >123 Fashion Street, Cape Verde</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="ri-mail-line text-gray-400 mr-3 mt-1"></i>
+                <span class="text-gray-400">info@lajj.com</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-phone-line text-gray-400 mr-3 mt-1"></i>
+                <span class="text-gray-400">+1 234 567 890</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            © 2025 LAJJ. All rights reserved.
+          </p>
+          <div class="flex items-center space-x-4">
+            <i class="ri-visa-fill text-gray-400 ri-lg"></i>
+            <i class="ri-mastercard-fill text-gray-400 ri-lg"></i>
+            <i class="ri-paypal-fill text-gray-400 ri-lg"></i>
+            <i class="ri-apple-fill text-gray-400 ri-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Header scroll effect
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("shadow-md");
+          } else {
+            header.classList.remove("shadow-md");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

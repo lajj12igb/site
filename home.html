@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAJJ - Streetwear Clothing Brand</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#000000',secondary:'#E6D5C3'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=Professional%20fashion%20photography%20of%20young%20diverse%20models%20wearing%20minimal%20black%20and%20white%20streetwear%20t-shirts%20against%20a%20clean%20urban%20background.%20Models%20are%20standing%20in%20stylish%20poses.%20The%20left%20side%20of%20the%20image%20has%20a%20gradient%20fade%20to%20pure%20white%20to%20allow%20text%20overlay.%20Modern%2C%20high-fashion%20aesthetic%20with%20perfect%20lighting.&width=1920&height=1080&seq=hero1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .newsletter-section {
+            background-color: #f9f9f9;
+        }
+        .product-card:hover .quick-view {
+            opacity: 1;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        input:focus {
+            outline: none;
+        }
+        .cart-count {
+            top: -8px;
+            right: -8px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .filter-option input:checked + span {
+            border-color: #000;
+            background-color: #000;
+        }
+        .size-option input:checked + span {
+            background-color: #000;
+            color: white;
+        }
+        .header-scroll {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-['Pacifico'] text-black">LAJJ</a>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link active text-sm font-medium hover:text-black">HOME</a>
+                <a href="#" class="nav-link text-sm font-medium hover:text-black">SHOP</a>
+                <a href="#" class="nav-link text-sm font-medium hover:text-black">ABOUT</a>
+                <a href="#" class="nav-link text-sm font-medium hover:text-black">CONTACT</a>
+            </nav>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center space-x-4">
+                <button class="w-10 h-10 flex items-center justify-center">
+                    <i class="ri-search-line ri-lg"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center">
+                    <i class="ri-user-line ri-lg"></i>
+                </button>
+                <button class="w-10 h-10 flex items-center justify-center relative">
+                    <i class="ri-shopping-bag-line ri-lg"></i>
+                    <span class="cart-count absolute bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+                </button>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section h-screen flex items-center">
+        <div class="container mx-auto px-4 w-full">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">REDEFINE YOUR STYLE</h1>
+                <p class="text-lg mb-8 max-w-lg">Minimal streetwear for the bold and authentic. Born in Cape Verde, worn worldwide.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-black text-white px-8 py-3 font-medium !rounded-button whitespace-nowrap">SHOP NOW</button>
+                    <button class="bg-white border border-black px-8 py-3 font-medium !rounded-button whitespace-nowrap">EXPLORE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold">NEW ARRIVALS</h2>
+                <a href="#" class="text-sm font-medium border-b border-black pb-1">VIEW ALL</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20black%20oversized%20t-shirt%20with%20minimal%20white%20graphic%20design%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20t-shirt%20is%20slightly%20draped%20to%20show%20its%20relaxed%20fit.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=600&height=800&seq=prod1&orientation=portrait" alt="Black Oversized Tee" class="w-full h-[400px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">OVERSIZED GRAPHIC TEE</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$49.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-gray-200 border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20white%20t-shirt%20with%20minimal%20black%20graphic%20design%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20t-shirt%20has%20a%20modern%20cut%20with%20slightly%20dropped%20shoulders.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=600&height=800&seq=prod2&orientation=portrait" alt="White Graphic Tee" class="w-full h-[400px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">MINIMAL LOGO TEE</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$45.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-gray-500 border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20sand-colored%20t-shirt%20with%20black%20minimal%20graphic%20design%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20t-shirt%20has%20a%20boxy%20fit%20with%20premium%20fabric%20texture%20visible.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=600&height=800&seq=prod3&orientation=portrait" alt="Sand Boxy Tee" class="w-full h-[400px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">BOXY FIT STATEMENT TEE</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$52.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Best Sellers Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold">BEST SELLERS</h2>
+                <a href="#" class="text-sm font-medium border-b border-black pb-1">VIEW ALL</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Best Seller 1 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20black%20t-shirt%20with%20white%20minimalist%20design%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20t-shirt%20has%20a%20premium%20quality%20look%20with%20perfect%20draping.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=500&height=600&seq=best1&orientation=portrait" alt="Black Essential Tee" class="w-full h-[300px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">ESSENTIAL TEE</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$42.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Best Seller 2 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20white%20long%20sleeve%20t-shirt%20with%20black%20minimal%20design%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20t-shirt%20has%20a%20relaxed%20fit%20with%20subtle%20texture.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=500&height=600&seq=best2&orientation=portrait" alt="White Long Sleeve" class="w-full h-[300px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">LONG SLEEVE BASIC</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$55.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-white border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Best Seller 3 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20a%20gray%20oversized%20hoodie%20with%20minimal%20black%20logo%20on%20front%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20hoodie%20has%20a%20premium%20quality%20look%20with%20perfect%20draping.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=500&height=600&seq=best3&orientation=portrait" alt="Gray Hoodie" class="w-full h-[300px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">OVERSIZED HOODIE</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$85.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-gray-500 border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Best Seller 4 -->
+                <div class="product-card group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20studio%20photo%20of%20sand-colored%20sweatpants%20with%20black%20minimal%20branding%2C%20displayed%20on%20a%20clean%20white%20background.%20The%20sweatpants%20have%20a%20relaxed%20fit%20with%20premium%20fabric%20texture%20visible.%20High-quality%20fashion%20product%20photography%20with%20perfect%20lighting%20and%20shadows.&width=500&height=600&seq=best4&orientation=portrait" alt="Sand Sweatpants" class="w-full h-[300px] object-cover object-top transition-transform duration-500">
+                        <div class="quick-view opacity-0 transition-opacity absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                            <button class="bg-white text-black px-6 py-2 font-medium !rounded-button whitespace-nowrap">QUICK VIEW</button>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium">RELAXED SWEATPANTS</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg">$75.00</span>
+                        <div class="flex space-x-2">
+                            <span class="w-4 h-4 rounded-full bg-secondary border border-gray-300"></span>
+                            <span class="w-4 h-4 rounded-full bg-black border border-gray-300"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="w-full md:w-1/2">
+                    <img src="https://readdy.ai/api/search-image?query=Beautiful%20landscape%20of%20Cape%20Verde%20with%20coastal%20views%2C%20colorful%20buildings%2C%20and%20natural%20scenery.%20The%20image%20shows%20the%20cultural%20heritage%20and%20vibrant%20atmosphere%20of%20the%20islands.%20Bright%20natural%20lighting%20with%20clear%20blue%20skies%20and%20ocean.%20Perfect%20travel%20photography%20showcasing%20the%20origin%20of%20the%20LAJJ%20brand.&width=800&height=600&seq=capeverde&orientation=landscape" alt="Cape Verde" class="w-full h-[500px] object-cover">
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-6">OUR STORY</h2>
+                    <p class="text-lg mb-6">Born in the vibrant streets of Cape Verde and inspired by global street culture, LAJJ brings authentic streetwear to the world. Our minimal designs with bold statements represent the voice of a generation that values authenticity and self-expression.</p>
+                    <p class="text-lg mb-8">Every piece is crafted with premium materials and attention to detail, ensuring comfort without compromising on style. We believe in creating timeless pieces that transcend trends.</p>
+                    <button class="bg-black text-white px-8 py-3 font-medium self-start !rounded-button whitespace-nowrap">READ MORE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">@LAJJ_OFFICIAL</h2>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                <img src="https://readdy.ai/api/search-image?query=Lifestyle%20photo%20of%20young%20person%20wearing%20LAJJ%20black%20t-shirt%20in%20urban%20setting.%20Natural%20street%20photography%20style%20with%20authentic%20feel.%20The%20person%20is%20casually%20posed%20against%20city%20background.&width=300&height=300&seq=insta1&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+                <img src="https://readdy.ai/api/search-image?query=Close-up%20detail%20shot%20of%20LAJJ%20t-shirt%20fabric%20and%20minimal%20logo%20design.%20Professional%20product%20photography%20showing%20texture%20and%20quality%20of%20the%20material.&width=300&height=300&seq=insta2&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+                <img src="https://readdy.ai/api/search-image?query=Behind%20the%20scenes%20at%20LAJJ%20photoshoot%20with%20models%20and%20creative%20team.%20Candid%20moment%20showing%20the%20brands%20creative%20process.&width=300&height=300&seq=insta3&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+                <img src="https://readdy.ai/api/search-image?query=Stylish%20flat%20lay%20of%20LAJJ%20clothing%20items%20arranged%20with%20accessories.%20Minimalist%20aesthetic%20with%20black%2C%20white%20and%20sand%20colored%20items.&width=300&height=300&seq=insta4&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+                <img src="https://readdy.ai/api/search-image?query=Group%20of%20friends%20wearing%20LAJJ%20streetwear%20at%20urban%20location.%20Natural%20lifestyle%20photography%20showing%20the%20brands%20community.&width=300&height=300&seq=insta5&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+                <img src="https://readdy.ai/api/search-image?query=Artistic%20black%20and%20white%20portrait%20of%20person%20wearing%20LAJJ%20t-shirt.%20Moody%20lighting%20with%20focus%20on%20expression%20and%20brand%20aesthetic.&width=300&height=300&seq=insta6&orientation=squarish" alt="Instagram Post" class="w-full h-[150px] md:h-[200px] object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section py-24">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold mb-4">JOIN THE MOVEMENT</h2>
+            <p class="text-lg mb-8">Subscribe to our newsletter for exclusive offers, new releases and behind-the-scenes content.</p>
+            <form class="flex flex-col md:flex-row gap-4">
+                <input type="email" placeholder="Your email address" class="flex-grow px-6 py-3 border border-gray-300 !rounded-button">
+                <button type="submit" class="bg-black text-white px-8 py-3 font-medium !rounded-button whitespace-nowrap">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">LAJJ</h3>
+                    <p class="text-gray-400 mb-6">Minimal streetwear for the bold and authentic. Born in Cape Verde, worn worldwide.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full">
+                            <i class="ri-instagram-line ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full">
+                            <i class="ri-twitter-x-line ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full">
+                            <i class="ri-tiktok-line ri-lg text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full">
+                            <i class="ri-youtube-line ri-lg text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">SHOP</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">All Products</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sale</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">HELP</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Customer Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping Information</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">ABOUT</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Press</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400 text-sm">© 2025 LAJJ. All rights reserved.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="ri-visa-line ri-lg text-gray-400"></i>
+                    <i class="ri-mastercard-line ri-lg text-gray-400"></i>
+                    <i class="ri-paypal-line ri-lg text-gray-400"></i>
+                    <i class="ri-apple-fill ri-lg text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scroll');
+                } else {
+                    header.classList.remove('header-scroll');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

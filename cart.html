@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho de Compras - LAJJ</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#000000',secondary:'#333333'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.cart-item-enter {
+opacity: 0;
+transform: translateY(-20px);
+}
+.cart-item-enter-active {
+opacity: 1;
+transform: translateY(0);
+transition: opacity 300ms, transform 300ms;
+}
+.cart-item-exit {
+opacity: 1;
+}
+.cart-item-exit-active {
+opacity: 0;
+transform: translateY(-20px);
+transition: opacity 300ms, transform 300ms;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type="number"] {
+-moz-appearance: textfield;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen">
+<header class="bg-white border-b border-gray-100 py-4">
+<div class="container mx-auto px-4 flex justify-between items-center">
+<h1 class="text-3xl font-['Pacifico'] text-primary">LAJJ</h1>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 flex items-center justify-center relative">
+<i class="ri-user-line text-xl"></i>
+</div>
+<div class="w-10 h-10 flex items-center justify-center relative">
+<i class="ri-shopping-cart-line text-xl"></i>
+<span class="absolute -top-1 -right-1 w-5 h-5 bg-primary text-white text-xs flex items-center justify-center rounded-full">3</span>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-8">
+<h2 class="text-2xl font-semibold mb-6 text-center md:text-left">Seu Carrinho</h2>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Lista de produtos -->
+<div class="lg:w-2/3">
+<div class="bg-white border border-gray-200 rounded p-4 mb-4">
+<div class="flex flex-col md:flex-row gap-4 pb-4 border-b border-gray-100">
+<div class="w-full md:w-24 h-24 bg-gray-50 rounded flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=minimalist%20black%20t-shirt%20with%20urban%20design%20on%20white%20background%2C%20product%20photography%2C%20high%20quality%2C%20fashion%20catalog%20style&width=240&height=240&seq=1&orientation=squarish" alt="Camiseta Urban Flow" class="object-cover w-full h-full object-top">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-medium text-lg">Camiseta Urban Flow</h3>
+<p class="text-gray-600 text-sm">Tamanho: M | Cor: Preto</p>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2 gap-2">
+<div class="flex items-center">
+<span class="text-gray-700 mr-2">Preço: 1.200 ECV</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex border border-gray-300 rounded-button overflow-hidden">
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item1', -1)">
+<i class="ri-subtract-line"></i>
+</button>
+<input type="number" id="item1-qty" class="w-10 h-8 text-center border-none focus:outline-none" value="1" min="1" max="10" readonly>
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item1', 1)">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 transition" onclick="removeItem('item1')">
+<i class="ri-delete-bin-line"></i>
+</button>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-medium" id="item1-subtotal">Subtotal: 1.200 ECV</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 py-4 border-b border-gray-100">
+<div class="w-full md:w-24 h-24 bg-gray-50 rounded flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=minimalist%20white%20t-shirt%20with%20urban%20street%20art%20design%20on%20white%20background%2C%20product%20photography%2C%20high%20quality%2C%20fashion%20catalog%20style&width=240&height=240&seq=2&orientation=squarish" alt="Camiseta Street Art" class="object-cover w-full h-full object-top">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-medium text-lg">Camiseta Street Art</h3>
+<p class="text-gray-600 text-sm">Tamanho: L | Cor: Branco</p>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2 gap-2">
+<div class="flex items-center">
+<span class="text-gray-700 mr-2">Preço: 1.500 ECV</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex border border-gray-300 rounded-button overflow-hidden">
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item2', -1)">
+<i class="ri-subtract-line"></i>
+</button>
+<input type="number" id="item2-qty" class="w-10 h-8 text-center border-none focus:outline-none" value="2" min="1" max="10" readonly>
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item2', 1)">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 transition" onclick="removeItem('item2')">
+<i class="ri-delete-bin-line"></i>
+</button>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-medium" id="item2-subtotal">Subtotal: 3.000 ECV</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 pt-4">
+<div class="w-full md:w-24 h-24 bg-gray-50 rounded flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=minimalist%20black%20hoodie%20with%20urban%20design%20on%20white%20background%2C%20product%20photography%2C%20high%20quality%2C%20fashion%20catalog%20style&width=240&height=240&seq=3&orientation=squarish" alt="Moletom Urban Style" class="object-cover w-full h-full object-top">
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-medium text-lg">Moletom Urban Style</h3>
+<p class="text-gray-600 text-sm">Tamanho: XL | Cor: Preto</p>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2 gap-2">
+<div class="flex items-center">
+<span class="text-gray-700 mr-2">Preço: 2.500 ECV</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex border border-gray-300 rounded-button overflow-hidden">
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item3', -1)">
+<i class="ri-subtract-line"></i>
+</button>
+<input type="number" id="item3-qty" class="w-10 h-8 text-center border-none focus:outline-none" value="1" min="1" max="10" readonly>
+<button class="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition" onclick="updateQuantity('item3', 1)">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-red-500 transition" onclick="removeItem('item3')">
+<i class="ri-delete-bin-line"></i>
+</button>
+</div>
+</div>
+<div class="mt-2">
+<p class="font-medium" id="item3-subtotal">Subtotal: 2.500 ECV</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Resumo do pedido -->
+<div class="lg:w-1/3">
+<div class="bg-gray-50 border border-gray-200 rounded p-6 sticky top-4">
+<h3 class="text-xl font-semibold mb-4">Resumo do Pedido</h3>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between">
+<span class="text-gray-600">Subtotal</span>
+<span id="cart-subtotal" class="font-medium">6.700 ECV</span>
+</div>
+<div class="pt-3 border-t border-gray-200">
+<p class="text-sm text-gray-600 mb-2">Pontos do Quiz (1 ponto = 1 ECV de desconto)</p>
+<div class="flex gap-2 mb-3">
+<input type="number" id="points-input" class="flex-1 px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Quantos pontos você tem?">
+<button id="apply-points" class="px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-200 rounded-button whitespace-nowrap !rounded-button">Aplicar</button>
+</div>
+<div id="discount-container" class="flex justify-between hidden">
+<span class="text-gray-600">Desconto</span>
+<span id="discount-amount" class="font-medium text-green-600">0 ECV</span>
+</div>
+</div>
+<div class="pt-3 border-t border-gray-200">
+<div class="flex justify-between text-lg font-semibold">
+<span>Total</span>
+<span id="cart-total">6.700 ECV</span>
+</div>
+</div>
+</div>
+<button id="checkout-button" class="w-full py-3 bg-primary text-white font-medium rounded-button hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap !rounded-button">Finalizar Compra</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-100 py-8 mt-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="mb-4 md:mb-0">
+<h2 class="text-2xl font-['Pacifico'] text-primary">LAJJ</h2>
+<p class="text-gray-600 mt-2">Moda urbana com estilo único</p>
+</div>
+<div class="flex gap-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition">
+<i class="ri-facebook-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition">
+<i class="ri-twitter-x-line"></i>
+</a>
+</div>
+</div>
+<div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-500 text-sm">
+<p>© 2025 LAJJ. Todos os direitos reservados.</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const prices = {
+'item1': 1200,
+'item2': 1500,
+'item3': 2500
+};
+function calculateTotal() {
+let total = 0;
+for (const item in prices) {
+const qty = parseInt(document.getElementById(`${item}-qty`).value);
+total += prices[item] * qty;
+document.getElementById(`${item}-subtotal`).textContent = `Subtotal: ${prices[item] * qty} ECV`;
+}
+document.getElementById('cart-subtotal').textContent = `${total} ECV`;
+// Apply discount if exists
+const discountElement = document.getElementById('discount-amount');
+let discount = 0;
+if (discountElement && !discountElement.parentElement.classList.contains('hidden')) {
+discount = parseInt(discountElement.textContent);
+}
+document.getElementById('cart-total').textContent = `${total - discount} ECV`;
+}
+window.updateQuantity = function(itemId, change) {
+const inputElement = document.getElementById(`${itemId}-qty`);
+let currentQty = parseInt(inputElement.value);
+currentQty += change;
+if (currentQty < 1) currentQty = 1;
+if (currentQty > 10) currentQty = 10;
+inputElement.value = currentQty;
+calculateTotal();
+};
+window.removeItem = function(itemId) {
+const item = document.getElementById(`${itemId}-qty`).closest('.flex-col');
+item.style.opacity = '0';
+item.style.height = '0';
+item.style.overflow = 'hidden';
+item.style.marginTop = '0';
+item.style.marginBottom = '0';
+item.style.paddingTop = '0';
+item.style.paddingBottom = '0';
+item.style.transition = 'all 0.3s ease';
+setTimeout(() => {
+item.remove();
+calculateTotal();
+// Check if cart is empty
+const cartItems = document.querySelectorAll('.border-b, .pt-4');
+if (cartItems.length === 0) {
+const cartContainer = document.querySelector('.bg-white.border');
+if (cartContainer) {
+cartContainer.innerHTML = '<p class="py-8 text-center text-gray-500">Seu carrinho está vazio</p>';
+}
+}
+}, 300);
+};
+// Apply points button
+document.getElementById('apply-points').addEventListener('click', function() {
+const pointsInput = document.getElementById('points-input');
+const points = parseInt(pointsInput.value);
+if (isNaN(points) || points < 0) {
+alert('Por favor, insira um número válido de pontos.');
+return;
+}
+const discount = points;
+document.getElementById('discount-container').classList.remove('hidden');
+document.getElementById('discount-amount').textContent = `${discount} ECV`;
+calculateTotal();
+window.alert('Desconto aplicado com sucesso!');
+});
+// Checkout button
+document.getElementById('checkout-button').addEventListener('click', function() {
+alert('Redirecionando para página de pagamento...');
+});
+// Initial calculation
+calculateTotal();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAJJ - Loja Online</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#000000',secondary:'#E6D5C3'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.custom-checkbox {
+position: relative;
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+.checkmark {
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 4px;
+position: relative;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #000;
+border-color: #000;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+left: 7px;
+top: 3px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-range {
+-webkit-appearance: none;
+width: 100%;
+height: 2px;
+background: #ddd;
+outline: none;
+margin: 10px 0;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 16px;
+height: 16px;
+background: #000;
+cursor: pointer;
+border-radius: 50%;
+}
+.custom-range::-moz-range-thumb {
+width: 16px;
+height: 16px;
+background: #000;
+cursor: pointer;
+border-radius: 50%;
+}
+.size-selector input[type="radio"] {
+display: none;
+}
+.size-selector label {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 40px;
+height: 40px;
+border: 1px solid #ddd;
+border-radius: 4px;
+cursor: pointer;
+transition: all 0.2s;
+}
+.size-selector input[type="radio"]:checked + label {
+background-color: #000;
+color: white;
+border-color: #000;
+}
+.color-selector input[type="radio"] {
+display: none;
+}
+.color-selector label {
+display: inline-block;
+width: 24px;
+height: 24px;
+border-radius: 50%;
+cursor: pointer;
+position: relative;
+}
+.color-selector input[type="radio"]:checked + label::after {
+content: "";
+position: absolute;
+top: -3px;
+left: -3px;
+right: -3px;
+bottom: -3px;
+border: 1px solid #000;
+border-radius: 50%;
+}
+.product-card:hover .hover-actions {
+opacity: 1;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease-out;
+}
+.accordion-content.active {
+max-height: 500px;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header/Navigation -->
+<header class="fixed w-full bg-white bg-opacity-95 shadow-sm z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<a href="/" class="text-3xl font-['Pacifico'] text-primary">LAJJ</a>
+<div class="hidden md:flex items-center bg-gray-100 rounded-full px-4 py-2 w-1/3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-search-line text-gray-500"></i>
+</div>
+<input type="text" placeholder="Pesquisar produtos..." class="bg-transparent border-none w-full text-sm focus:outline-none">
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="index.html" class="text-gray-600 hover:text-primary font-medium">Início</a>
+<a href="shop.html" class="text-primary hover:text-gray-600 font-medium">Loja</a>
+<a href="about.html" class="text-gray-600 hover:text-primary font-medium">Sobre</a>
+<a href="contact.html" class="text-gray-600 hover:text-primary font-medium">Contato</a>
+</nav>
+<div class="flex items-center space-x-4">
+<a href="/search" class="md:hidden w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-search-line text-gray-700 ri-lg"></i>
+</a>
+<a href="login.html" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-user-line text-gray-700 ri-lg"></i>
+</a>
+<a href="/favorites" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-heart-line text-gray-700 ri-lg"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">2</span>
+</a>
+<a href="cart.html" class="w-10 h-10 flex items-center justify-center relative cursor-pointer hover:bg-gray-100 rounded-full transition">
+<i class="ri-shopping-bag-line text-gray-700 ri-lg"></i>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</a>
+<button class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 rounded-full transition" onclick="toggleMobileMenu()">
+<i class="ri-menu-line text-gray-700 ri-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 min-h-screen">
+<div class="container mx-auto px-4 py-8">
+<!-- Breadcrumbs -->
+<div class="mb-6 text-sm">
+<a href="/" class="text-gray-500 hover:text-primary">Início</a>
+<span class="mx-2 text-gray-400">/</span>
+<span class="text-gray-800">Loja</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<!-- Sidebar Filters -->
+<div class="md:w-1/4 lg:w-1/5">
+<div class="bg-white rounded shadow p-6 sticky top-24">
+<div class="mb-6">
+<h3 class="font-semibold text-lg mb-4">Categorias</h3>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm text-gray-600">Filtros selecionados</span>
+<span id="selectedCount" class="text-sm text-primary font-medium">0 produtos</span>
+</div>
+<ul class="space-y-3">
+<li>
+<label class="custom-checkbox">
+<input type="checkbox" id="category-all" checked>
+<span class="checkmark mr-3"></span>
+<span>Todos os Produtos</span>
+</label>
+</li>
+<li>
+<label class="custom-checkbox">
+<input type="checkbox" id="category-tshirts">
+<span class="checkmark mr-3"></span>
+<span>T-Shirts</span>
+</label>
+</li>
+<li>
+<label class="custom-checkbox">
+<input type="checkbox" id="category-hoodies">
+<span class="checkmark mr-3"></span>
+<span>Hoodies</span>
+</label>
+</li>
+<li>
+<label class="custom-checkbox">
+<input type="checkbox" id="category-pants">
+<span class="checkmark mr-3"></span>
+<span>Calças</span>
+</label>
+</li>
+<li>
+<label class="custom-checkbox">
+<input type="checkbox" id="category-accessories">
+<span class="checkmark mr-3"></span>
+<span>Acessórios</span>
+</label>
+</li>
+</ul>
+</div>
+<div class="mb-6 border-t pt-6">
+<h3 class="font-semibold text-lg mb-4">Preço</h3>
+<div class="px-2">
+<input type="range" min="500" max="10000" value="5000" class="custom-range" id="priceRange">
+<div class="flex justify-between text-sm text-gray-600 mt-2">
+<span>500$00</span>
+<span id="priceValue">5.000$00</span>
+<span>10.000$00</span>
+</div>
+</div>
+</div>
+<div class="mb-6 border-t pt-6">
+<h3 class="font-semibold text-lg mb-4">Tamanho</h3>
+<div class="flex flex-wrap gap-2">
+<div class="size-selector">
+<input type="radio" name="size" id="size-xs">
+<label for="size-xs">XS</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="size" id="size-s">
+<label for="size-s">S</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="size" id="size-m" checked>
+<label for="size-m">M</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="size" id="size-l">
+<label for="size-l">L</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="size" id="size-xl">
+<label for="size-xl">XL</label>
+</div>
+</div>
+</div>
+<div class="mb-6 border-t pt-6">
+<h3 class="font-semibold text-lg mb-4">Cor</h3>
+<div class="flex flex-wrap gap-3">
+<div class="color-selector">
+<input type="radio" name="color" id="color-black" checked>
+<label for="color-black" style="background-color: #000000;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="color" id="color-white">
+<label for="color-white" style="background-color: #ffffff; border: 1px solid #ddd;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="color" id="color-gray">
+<label for="color-gray" style="background-color: #808080;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="color" id="color-beige">
+<label for="color-beige" style="background-color: #E6D5C3;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="color" id="color-blue">
+<label for="color-blue" style="background-color: #3b82f6;"></label>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-2 !rounded-button font-medium hover:bg-gray-800 transition whitespace-nowrap">Aplicar Filtros</button>
+</div>
+</div>
+<!-- Products Grid -->
+<div class="md:w-3/4 lg:w-4/5">
+<!-- Sorting and View Options -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+<div class="flex items-center">
+<span class="text-gray-700 mr-3">Exibindo 24 de 86 produtos</span>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-300 rounded py-2 pl-4 pr-10 focus:outline-none focus:border-primary text-sm">
+<option>Mais Recentes</option>
+<option>Preço: Menor para Maior</option>
+<option>Preço: Maior para Menor</option>
+<option>Mais Populares</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<button class="w-9 h-9 flex items-center justify-center bg-primary text-white rounded hover:bg-gray-800 transition">
+<i class="ri-layout-grid-line"></i>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-white text-gray-600 border border-gray-300 rounded hover:border-primary hover:text-primary transition">
+<i class="ri-list-check-2"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Products Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Product 1 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="ChatGPT Image Apr 21, 2025, 08_37_08 PM.png">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+<div class="absolute top-3 left-3">
+<span class="bg-primary text-white text-xs px-2 py-1 rounded">NOVO</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">T-shirt Essential</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.8</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">T-shirt minimalista</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">2.500$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520a%2520white%2520t-shirt%2520with%2520minimalist%2520design%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=102&orientation=portrait" alt="T-shirt Branca" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">T-shirt Básica</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.6</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">T-shirt básica branca</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">1.800$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520a%2520beige%2520hoodie%2520with%2520minimalist%2520design%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=103&orientation=portrait" alt="Hoodie Bege" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+<div class="absolute top-3 left-3">
+<span class="bg-red-500 text-white text-xs px-2 py-1 rounded">-20%</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Hoodie Oversize</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.9</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Hoodie estilo oversize</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-primary font-semibold">4.800$00</span>
+<span class="text-gray-400 text-sm line-through ml-2">6.000$00</span>
+</div>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520a%2520black%2520hoodie%2520with%2520minimalist%2520design%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=104&orientation=portrait" alt="Hoodie Preta" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Hoodie Essential</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.7</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Hoodie clássico preto</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">5.200$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 5 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%2520male%2520model%2520wearing%2520black%2520cargo%2520pants%2520with%2520minimalist%2520design%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=105&orientation=portrait" alt="Calças Cargo" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+<div class="absolute top-3 left-3">
+<span class="bg-primary text-white text-xs px-2 py-1 rounded">NOVO</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Calças Cargo</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.5</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Calças estilo cargo</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">6.500$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=young%2520female%2520model%2520wearing%2520beige%2520wide%2520leg%2520pants%2520with%2520minimalist%2520design%2520against%2520neutral%2520background%2520professional%2520fashion%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=106&orientation=portrait" alt="Calças Wide Leg" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Calças Wide Leg</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.4</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Calças estilo wide leg</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">5.800$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 7 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=black%2520minimalist%2520cap%2520with%2520small%2520logo%2520against%2520neutral%2520background%2520professional%2520product%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=107&orientation=portrait" alt="Boné Preto" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+<div class="absolute top-3 left-3">
+<span class="bg-red-500 text-white text-xs px-2 py-1 rounded">-15%</span>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Boné Essential</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.3</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Boné minimalista</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-primary font-semibold">1.700$00</span>
+<span class="text-gray-400 text-sm line-through ml-2">2.000$00</span>
+</div>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+<!-- Product 8 -->
+<div class="product-card group relative bg-white rounded shadow overflow-hidden">
+<div class="relative overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=black%2520minimalist%2520backpack%2520with%2520small%2520logo%2520against%2520neutral%2520background%2520professional%2520product%2520photography%2520with%2520soft%2520lighting%2520and%2520subtle%2520shadows%2520clean%2520composition%2520for%2520e-commerce%2520website&width=600&height=800&seq=108&orientation=portrait" alt="Mochila Preta" class="w-full h-[300px] object-cover object-top transition duration-300 group-hover:scale-105">
+<div class="hover-actions opacity-0 absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center transition-opacity duration-300">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-eye-line text-gray-700"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-white rounded-full hover:bg-gray-100 transition">
+<i class="ri-heart-line text-gray-700"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-gray-800 font-medium">Mochila Urban</h3>
+<div class="flex">
+<i class="ri-star-fill text-yellow-400 text-sm"></i>
+<span class="text-sm text-gray-600 ml-1">4.8</span>
+</div>
+</div>
+<p class="text-gray-500 text-sm mb-3">Mochila estilo urbano</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-semibold">7.500$00</span>
+<button class="bg-primary text-white px-3 py-2 !rounded-button text-sm font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center">
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:border-primary hover:text-primary transition">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-white">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:border-primary hover:text-primary transition">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:border-primary hover:text-primary transition">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-gray-300 hover:border-primary hover:text-primary transition">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Customer Reviews Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-12 text-center">Avaliações dos Clientes</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="bg-white p-6 rounded shadow">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520young%2520african%2520woman%2520smiling%2520against%2520neutral%2520background%2520professional%2520headshot%2520with%2520soft%2520lighting&width=100&height=100&seq=201&orientation=squarish" alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h4 class="font-medium">Daniela Monteiro</h4>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Adoro a qualidade das t-shirts da LAJJ! O tecido é super confortável e o tamanho M serviu perfeitamente. Já comprei várias cores e recomendo a todos."</p>
+<div class="flex space-x-2 mb-4">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520black%2520t-shirt%2520fabric%2520texture%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520material&width=80&height=80&seq=202&orientation=squarish" alt="Detalhe do produto" class="w-16 h-16 object-cover rounded">
+<img src="https://readdy.ai/api/search-image?query=person%2520wearing%2520black%2520t-shirt%2520showing%2520fit%2520partial%2520view%2520with%2520soft%2520lighting&width=80&height=80&seq=203&orientation=squarish" alt="Produto em uso" class="w-16 h-16 object-cover rounded">
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500">21/04/2025</span>
+<div class="flex space-x-4">
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line mr-1"></i>
+<span>12</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-down-line mr-1"></i>
+<span>2</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-white p-6 rounded shadow">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520young%2520man%2520with%2520beard%2520smiling%2520against%2520neutral%2520background%2520professional%2520headshot%2520with%2520soft%2520lighting&width=100&height=100&seq=204&orientation=squarish" alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h4 class="font-medium">Carlos Tavares</h4>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"O hoodie que comprei é excelente, muito confortável e o design é minimalista como eu gosto. Único ponto é que o tamanho XL ficou um pouco justo, recomendo pedir um tamanho acima."</p>
+<div class="flex space-x-2 mb-4">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520black%2520hoodie%2520fabric%2520texture%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520material&width=80&height=80&seq=205&orientation=squarish" alt="Detalhe do produto" class="w-16 h-16 object-cover rounded">
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500">18/04/2025</span>
+<div class="flex space-x-4">
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line mr-1"></i>
+<span>8</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-down-line mr-1"></i>
+<span>1</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-white p-6 rounded shadow">
+<div class="flex items-center mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520young%2520woman%2520with%2520curly%2520hair%2520smiling%2520against%2520neutral%2520background%2520professional%2520headshot%2520with%2520soft%2520lighting&width=100&height=100&seq=206&orientation=squarish" alt="Cliente" class="w-12 h-12 rounded-full object-cover mr-4">
+<div>
+<h4 class="font-medium">Mariana Fortes</h4>
+<div class="flex text-yellow-400 mt-1">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-line"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"As calças wide leg são perfeitas! O tecido é de ótima qualidade e o corte é muito elegante. Tamanho S serviu perfeitamente para mim. Entrega rápida para São Vicente também!"</p>
+<div class="flex space-x-2 mb-4">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520beige%2520pants%2520fabric%2520texture%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520material&width=80&height=80&seq=207&orientation=squarish" alt="Detalhe do produto" class="w-16 h-16 object-cover rounded">
+<img src="https://readdy.ai/api/search-image?query=person%2520wearing%2520beige%2520wide%2520leg%2520pants%2520showing%2520fit%2520partial%2520view%2520with%2520soft%2520lighting&width=80&height=80&seq=208&orientation=squarish" alt="Produto em uso" class="w-16 h-16 object-cover rounded">
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500">15/04/2025</span>
+<div class="flex space-x-4">
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-up-line mr-1"></i>
+<span>15</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<i class="ri-thumb-down-line mr-1"></i>
+<span>0</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold mb-12 text-center">Perguntas Frequentes</h2>
+<div class="max-w-3xl mx-auto">
+<!-- FAQ Item 1 -->
+<div class="border-b border-gray-200 py-4">
+<button class="w-full flex items-center justify-between text-left font-medium text-lg text-gray-800 focus:outline-none accordion-toggle">
+<span>Como funcionam as entregas para as diferentes ilhas?</span>
+<i class="ri-arrow-down-s-line transition-transform accordion-icon"></i>
+</button>
+<div class="accordion-content mt-2 text-gray-600">
+<p>Realizamos entregas para todas as ilhas de Cabo Verde. Para Santiago e São Vicente, o prazo é de 1-3 dias úteis. Para as demais ilhas, o prazo é de 3-7 dias úteis, dependendo da localização. As taxas de envio variam conforme o destino e são calculadas no checkout.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="border-b border-gray-200 py-4">
+<button class="w-full flex items-center justify-between text-left font-medium text-lg text-gray-800 focus:outline-none accordion-toggle">
+<span>Quais são os métodos de pagamento aceitos?</span>
+<i class="ri-arrow-down-s-line transition-transform accordion-icon"></i>
+</button>
+<div class="accordion-content mt-2 text-gray-600">
+<p>Aceitamos pagamentos via cartão de crédito/débito (Visa, Mastercard), transferência bancária, SISP, PayPal e pagamento na entrega (apenas para Praia e Mindelo). Para pagamentos via transferência, o envio será realizado após a confirmação do pagamento.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="border-b border-gray-200 py-4">
+<button class="w-full flex items-center justify-between text-left font-medium text-lg text-gray-800 focus:outline-none accordion-toggle">
+<span>Qual é a política de devolução?</span>
+<i class="ri-arrow-down-s-line transition-transform accordion-icon"></i>
+</button>
+<div class="accordion-content mt-2 text-gray-600">
+<p>Aceitamos devoluções em até 14 dias após o recebimento do produto, desde que o mesmo esteja em perfeitas condições, com etiquetas originais e embalagem intacta. Para iniciar uma devolução, entre em contato com nosso serviço de atendimento ao cliente. O reembolso será processado em até 7 dias úteis após recebermos o produto devolvido.</p>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="border-b border-gray-200 py-4">
+<button class="w-full flex items-center justify-between text-left font-medium text-lg text-gray-800 focus:outline-none accordion-toggle">
+<span>Como faço para escolher o tamanho correto?</span>
+<i class="ri-arrow-down-s-line transition-transform accordion-icon"></i>
+</button>
+<div class="accordion-content mt-2 text-gray-600">
+<p>Recomendamos consultar nossa tabela de medidas disponível na página de cada produto. Nossas peças seguem o padrão internacional de tamanhos (XS, S, M, L, XL). Para t-shirts e hoodies, se preferir um estilo mais folgado, sugerimos escolher um tamanho acima do habitual. Em caso de dúvidas, nossa equipe está disponível para auxiliar na escolha do tamanho ideal.</p>
+</div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="border-b border-gray-200 py-4">
+<button class="w-full flex items-center justify-between text-left font-medium text-lg text-gray-800 focus:outline-none accordion-toggle">
+<span>Os produtos são fabricados em Cabo Verde?</span>
+<i class="ri-arrow-down-s-line transition-transform accordion-icon"></i>
+</button>
+<div class="accordion-content mt-2 text-gray-600">
+<p>Nossos designs são criados em Cabo Verde, inspirados pela cultura local e global. A produção é realizada em parceria com fabricantes éticos em Portugal e Marrocos, garantindo alta qualidade e condições justas de trabalho. Estamos trabalhando para aumentar gradualmente a produção local em Cabo Verde nos próximos anos.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<h3 class="text-xl font-bold mb-6">LAJJ</h3>
+<p class="text-gray-400 mb-6">Streetwear minimalista inspirado em Cabo Verde e na cultura urbana global.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-instagram-line text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-facebook-fill text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-twitter-x-fill text-white ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition">
+<i class="ri-tiktok-fill text-white ri-lg"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">LOJA</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Novidades</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Mais Vendidos</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">T-Shirts</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Hoodies</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Calças</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Acessórios</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">AJUDA</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento ao Cliente</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Rastrear Encomenda</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Devoluções e Trocas</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Informações de Envio</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">Guia de Tamanhos</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">CONTATO</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-map-pin-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">Av 5 de Julho, São Vicente, Cabo Verde</span>
+</li>
+<li class="flex items-start">
+<i class="ri-mail-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">info@lajj.cv</span>
+</li>
+<li class="flex items-start">
+<i class="ri-phone-line text-gray-400 mr-3 mt-1"></i>
+<span class="text-gray-400">+238 231 34 34</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 LAJJ. Todos os direitos reservados.</p>
+<div class="flex items-center space-x-4">
+<i class="ri-visa-fill text-gray-400 ri-lg"></i>
+<i class="ri-mastercard-fill text-gray-400 ri-lg"></i>
+<i class="ri-paypal-fill text-gray-400 ri-lg"></i>
+<i class="ri-bank-card-fill text-gray-400 ri-lg"></i>
+</div>
+</div>
+</div>
+</footer>
+<!-- Quick View Modal -->
+<div id="quickViewModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+<div class="flex justify-end p-4">
+<button id="closeModal" class="text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="p-6">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/2">
+<div class="mb-4">
+<img src="ChatGPT Image Apr 21, 2025, 08_37_08 PM.png" alt="T-shirt Preta" class="w-full h-auto object-cover">
+</div>
+<div class="grid grid-cols-4 gap-2">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520black%2520t-shirt%2520fabric%2520texture%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520material&width=150&height=150&seq=301&orientation=squarish" alt="Detalhe 1" class="w-full h-20 object-cover cursor-pointer">
+<img src="https://readdy.ai/api/search-image?query=black%2520t-shirt%2520back%2520view%2520against%2520neutral%2520background%2520professional%2520product%2520photography&width=150&height=150&seq=302&orientation=squarish" alt="Detalhe 2" class="w-full h-20 object-cover cursor-pointer">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520black%2520t-shirt%2520sleeve%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520stitching&width=150&height=150&seq=303&orientation=squarish" alt="Detalhe 3" class="w-full h-20 object-cover cursor-pointer">
+<img src="https://readdy.ai/api/search-image?query=close%2520up%2520of%2520black%2520t-shirt%2520collar%2520detail%2520with%2520soft%2520lighting%2520showing%2520quality%2520stitching&width=150&height=150&seq=304&orientation=squarish" alt="Detalhe 4" class="w-full h-20 object-cover cursor-pointer">
+</div>
+</div>
+<div class="md:w-1/2">
+<h2 class="text-2xl font-bold mb-2">T-shirt Essential</h2>
+<div class="flex items-center mb-4">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-line"></i>
+</div>
+<span class="text-gray-600 ml-2">4.8 (24 avaliações)</span>
+</div>
+<p class="text-2xl font-semibold mb-4">2.500$00</p>
+<p class="text-gray-600 mb-6">T-shirt minimalista em algodão premium com corte regular. Design atemporal para o dia a dia com durabilidade superior e conforto máximo.</p>
+<div class="mb-6">
+<h3 class="font-medium mb-2">Cor</h3>
+<div class="flex space-x-3">
+<div class="color-selector">
+<input type="radio" name="modal-color" id="modal-color-black" checked>
+<label for="modal-color-black" style="background-color: #000000;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="modal-color" id="modal-color-white">
+<label for="modal-color-white" style="background-color: #ffffff; border: 1px solid #ddd;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="modal-color" id="modal-color-gray">
+<label for="modal-color-gray" style="background-color: #808080;"></label>
+</div>
+<div class="color-selector">
+<input type="radio" name="modal-color" id="modal-color-beige">
+<label for="modal-color-beige" style="background-color: #E6D5C3;"></label>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<h3 class="font-medium mb-2">Tamanho</h3>
+<div class="flex flex-wrap gap-2">
+<div class="size-selector">
+<input type="radio" name="modal-size" id="modal-size-xs">
+<label for="modal-size-xs">XS</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="modal-size" id="modal-size-s">
+<label for="modal-size-s">S</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="modal-size" id="modal-size-m" checked>
+<label for="modal-size-m">M</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="modal-size" id="modal-size-l">
+<label for="modal-size-l">L</label>
+</div>
+<div class="size-selector">
+<input type="radio" name="modal-size" id="modal-size-xl">
+<label for="modal-size-xl">XL</label>
+</div>
+</div>
+<a href="#" class="text-sm text-primary hover:underline mt-2 inline-block">Guia de tamanhos</a>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex items-center border border-gray-300 rounded">
+<button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary" id="decreaseQuantity">
+<i class="ri-subtract-line"></i>
+</button>
+<input type="number" value="1" min="1" class="w-12 h-10 text-center border-none" id="quantityInput">
+<button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary" id="increaseQuantity">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<button class="flex-grow bg-primary text-white py-3 !rounded-button font-medium hover:bg-gray-800 transition whitespace-nowrap">Adicionar ao Carrinho</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center text-gray-700 hover:text-primary">
+<i class="ri-heart-line mr-2"></i>
+<span>Adicionar aos Favoritos</span>
+</button>
+<button class="flex items-center text-gray-700 hover:text-primary">
+<i class="ri-share-line mr-2"></i>
+<span>Compartilhar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Category filter functionality
+const categoryAll = document.getElementById('category-all');
+const categoryCheckboxes = document.querySelectorAll('input[id^="category-"]:not(#category-all)');
+const selectedCountElement = document.getElementById('selectedCount');
+const applyFiltersButton = document.querySelector('button.w-full.bg-primary');
+// Product counts per category
+const productCounts = {
+    'category-tshirts': 24,
+    'category-hoodies': 18,
+    'category-pants': 12,
+    'category-accessories': 32
+};
+function updateSelectedCount() {
+    let totalSelected = 0;
+    
+    if (categoryAll.checked) {
+        totalSelected = 86; // Total number of products
+    } else {
+        categoryCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                totalSelected += productCounts[checkbox.id] || 0;
+            }
+        });
+    }
+    
+    selectedCountElement.textContent = `${totalSelected} produtos`;
+}
+// Handle "All Products" checkbox
+categoryAll.addEventListener('change', function() {
+    if (this.checked) {
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            checkbox.disabled = true;
+        });
+    } else {
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.disabled = false;
+        });
+    }
+    updateSelectedCount();
+});
+// Handle individual category checkboxes
+categoryCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            categoryAll.checked = false;
+            categoryCheckboxes.forEach(cb => {
+                cb.disabled = false;
+            });
+        }
+        updateSelectedCount();
+    });
+});
+// Apply filters button
+applyFiltersButton.addEventListener('click', function() {
+    const selectedCategories = [];
+    if (categoryAll.checked) {
+        selectedCategories.push('all');
+    } else {
+        categoryCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCategories.push(checkbox.id.replace('category-', ''));
+            }
+        });
+    }
+    
+    if (selectedCategories.length === 0) {
+        // Show notification if no category is selected
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded shadow-lg z-50';
+        notification.textContent = 'Selecione pelo menos uma categoria';
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+        return;
+    }
+    
+    // Show loading state
+    const originalText = applyFiltersButton.textContent;
+    applyFiltersButton.textContent = 'Aplicando...';
+    applyFiltersButton.disabled = true;
+    
+    // Simulate API call/filtering
+    setTimeout(() => {
+        // Reset button state
+        applyFiltersButton.textContent = originalText;
+        applyFiltersButton.disabled = false;
+        
+        // Show success notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50';
+        notification.textContent = 'Filtros aplicados com sucesso';
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }, 800);
+});
+// Initialize count
+updateSelectedCount();
+// Header scroll effect
+const header = document.querySelector('header');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 50) {
+header.classList.add('shadow-md');
+} else {
+header.classList.remove('shadow-md');
+}
+});
+// Mobile menu functionality
+window.toggleMobileMenu = function() {
+const nav = document.querySelector('nav');
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4', 'z-50');
+} else {
+nav.classList.add('hidden');
+nav.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4', 'z-50');
+}
+};
+// Price range slider
+const priceRange = document.getElementById('priceRange');
+const priceValue = document.getElementById('priceValue');
+if (priceRange && priceValue) {
+priceRange.addEventListener('input', function() {
+const value = this.value;
+priceValue.textContent = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "$00";
+});
+}
+// Quick view modal
+const quickViewButtons = document.querySelectorAll('.hover-actions button:first-child');
+const quickViewModal = document.getElementById('quickViewModal');
+const closeModal = document.getElementById('closeModal');
+if (quickViewButtons.length > 0 && quickViewModal && closeModal) {
+quickViewButtons.forEach(button => {
+button.addEventListener('click', function() {
+quickViewModal.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+});
+});
+closeModal.addEventListener('click', function() {
+quickViewModal.classList.add('hidden');
+document.body.style.overflow = 'auto';
+});
+quickViewModal.addEventListener('click', function(e) {
+if (e.target === quickViewModal) {
+quickViewModal.classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+});
+}
+// Quantity input
+const decreaseBtn = document.getElementById('decreaseQuantity');
+const increaseBtn = document.getElementById('increaseQuantity');
+const quantityInput = document.getElementById('quantityInput');
+if (decreaseBtn && increaseBtn && quantityInput) {
+decreaseBtn.addEventListener('click', function() {
+const currentValue = parseInt(quantityInput.value);
+if (currentValue > 1) {
+quantityInput.value = currentValue - 1;
+}
+});
+increaseBtn.addEventListener('click', function() {
+const currentValue = parseInt(quantityInput.value);
+quantityInput.value = currentValue + 1;
+});
+}
+// Accordion functionality
+const accordionToggles = document.querySelectorAll('.accordion-toggle');
+if (accordionToggles.length > 0) {
+accordionToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('.accordion-icon');
+if (content.classList.contains('active')) {
+content.classList.remove('active');
+icon.style.transform = 'rotate(0deg)';
+} else {
+content.classList.add('active');
+icon.style.transform = 'rotate(180deg)';
+}
+});
+});
+}
+});
+</script>
+</body>
+</html>
